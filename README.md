@@ -1,0 +1,2 @@
+# AndroidArchitectureSample
+Android Architecture Sample
