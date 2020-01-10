@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemViewHolder>() {
 
-    private lateinit var mItemList: List<Any>
+    private var mItemList: List<Any> = arrayListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchListItemViewHolder {
         return SearchListItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
