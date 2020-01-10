@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,5 +19,13 @@ class MainActivity : AppCompatActivity() {
             linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             layoutManager = linearLayoutManager
         }
+        NetworkService.searchAPI.search("web", "test").enqueue(object : Callback<Any>{
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+            }
+
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+            }
+
+        })
     }
 }
