@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
             linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             layoutManager = linearLayoutManager
         }
-        NetworkService.searchAPI.search("web", "test").enqueue(object : Callback<Any>{
-            override fun onFailure(call: Call<Any>, t: Throwable) {
+        NetworkService.searchAPI.search("web", "test").enqueue(object : Callback<DataModel>{
+            override fun onFailure(call: Call<DataModel>, t: Throwable) {
             }
 
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+            override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
             }
 
         })

@@ -7,6 +7,6 @@ interface NetworkInterface {
 
     @Headers("Authorization: KakaoAK $REST_API_KEY")
     @GET("v2/search/{type}")
-    fun search(@Path("type") type:String, @Query("query") query:String):Call<Any>
+    fun search(@Path("type") type:String, @Query("query") query:String):Call<DataModel>
 
 }
