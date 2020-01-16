@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
+                (rv_searchList.adapter as? SearchListAdapter)?.setDocumentData(response.body()?.documents)
             }
 
         })
