@@ -2,6 +2,7 @@ package com.ironelder.androidarchitecture
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
         NetworkService.searchAPI.search("web", "test").enqueue(object : Callback<DataModel>{
             override fun onFailure(call: Call<DataModel>, t: Throwable) {
+                Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
