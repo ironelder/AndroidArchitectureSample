@@ -31,4 +31,5 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+    //BuildTest를 위한 주석
 }
