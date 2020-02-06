@@ -18,5 +18,3 @@ Android Architecture Sample
 7. AAC ViewModel과 LiveData를 적용한다.
 
 8. Koin을 이용한 DI를 적용한다.
-
-//자동 빌드 테스트 커밋
