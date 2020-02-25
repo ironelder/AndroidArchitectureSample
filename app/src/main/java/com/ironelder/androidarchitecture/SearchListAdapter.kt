@@ -1,9 +1,12 @@
 package com.ironelder.androidarchitecture
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.listitem.view.*
 
 class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemViewHolder>() {
@@ -36,7 +39,8 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
 
     inner class SearchListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun setData(dc:Document){
-            view.tv_title.text=dc.title
+            Glide.with(view.rootView.context).load(dc.thumbnail).error(R.drawable.ic_launcher_background).into(view.iv_thumbnail)
+            view.tv_title.text=HtmlCompat.fromHtml(dc.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
         }
     }
 }
