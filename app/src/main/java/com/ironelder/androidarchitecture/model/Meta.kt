@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture
+package com.ironelder.androidarchitecture.model
 
 data class Meta(
     val dup_count: Int,

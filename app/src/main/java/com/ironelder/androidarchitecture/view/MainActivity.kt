@@ -1,9 +1,13 @@
-package com.ironelder.androidarchitecture
+package com.ironelder.androidarchitecture.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ironelder.androidarchitecture.component.NetworkService
+import com.ironelder.androidarchitecture.R
+import com.ironelder.androidarchitecture.component.SearchListAdapter
+import com.ironelder.androidarchitecture.model.DataModel
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         rv_searchList.apply {
-            adapter = SearchListAdapter()
+            adapter =
+                SearchListAdapter()
             val linearLayoutManager = LinearLayoutManager(this@MainActivity)
             linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             layoutManager = linearLayoutManager
