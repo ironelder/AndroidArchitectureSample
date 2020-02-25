@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
             layoutManager = linearLayoutManager
         }
-        NetworkService.searchAPI.search("web", "test").enqueue(object : Callback<DataModel>{
+        NetworkService.searchAPI.search("blog", "test").enqueue(object : Callback<DataModel>{
             override fun onFailure(call: Call<DataModel>, t: Throwable) {
                 Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
             }
