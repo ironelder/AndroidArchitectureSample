@@ -23,8 +23,8 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
         )
     }
 
-    fun setDocumentData(itemList:List<Document>?){
-        if(itemList != null){
+    fun setDocumentData(itemList: List<Document>?) {
+        if (itemList != null) {
             mItemList.addAll(itemList)
         }
         notifyDataSetChanged()
@@ -39,9 +39,10 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
     }
 
     inner class SearchListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun setData(dc: Document){
-            Glide.with(view.rootView.context).load(dc.thumbnail).error(R.drawable.ic_launcher_background).into(view.iv_thumbnail)
-            view.tv_title.text=HtmlCompat.fromHtml(dc.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        fun setData(dc: Document) {
+            Glide.with(view.rootView.context).load(dc.thumbnail)
+                .error(R.drawable.ic_launcher_background).into(view.iv_thumbnail)
+            view.tv_title.text = HtmlCompat.fromHtml(dc.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
         }
     }
 }

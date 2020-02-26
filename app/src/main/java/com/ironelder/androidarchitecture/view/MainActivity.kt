@@ -10,7 +10,9 @@ import com.ironelder.androidarchitecture.data.model.Document
 import com.ironelder.androidarchitecture.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(R.layout.activity_main), MainContract.View {
+class MainActivity :
+    BaseActivity<MainContract.View, MainContract.Presenter>(R.layout.activity_main),
+    MainContract.View {
     override val presenter = MainPresenter()
 
     override fun onDataChanged(result: List<Document>?) {
