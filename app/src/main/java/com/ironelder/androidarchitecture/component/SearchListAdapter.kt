@@ -7,7 +7,7 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ironelder.androidarchitecture.R
-import com.ironelder.androidarchitecture.model.Document
+import com.ironelder.androidarchitecture.data.model.Document
 import kotlinx.android.synthetic.main.listitem.view.*
 
 class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemViewHolder>() {

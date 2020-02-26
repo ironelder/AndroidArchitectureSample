@@ -1,7 +1,7 @@
 package com.ironelder.androidarchitecture.component
 
 import com.ironelder.androidarchitecture.common.REST_API_KEY
-import com.ironelder.androidarchitecture.model.DataModel
+import com.ironelder.androidarchitecture.data.model.DataModel
 import retrofit2.Call
 import retrofit2.http.*
 

@@ -3,18 +3,12 @@ package com.ironelder.androidarchitecture.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ironelder.androidarchitecture.R
-import com.ironelder.androidarchitecture.component.NetworkService
 import com.ironelder.androidarchitecture.component.SearchListAdapter
-import com.ironelder.androidarchitecture.model.DataModel
-import com.ironelder.androidarchitecture.model.Document
+import com.ironelder.androidarchitecture.data.model.Document
 import com.ironelder.androidarchitecture.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(R.layout.activity_main), MainContract.View {
     override val presenter = MainPresenter()

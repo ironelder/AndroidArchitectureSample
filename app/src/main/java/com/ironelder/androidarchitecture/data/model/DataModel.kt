@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture.model
+package com.ironelder.androidarchitecture.data.model
 
 data class DataModel(
     val documents: List<Document>,

@@ -1,7 +1,7 @@
 package com.ironelder.androidarchitecture.view
 
 import com.ironelder.androidarchitecture.component.NetworkService
-import com.ironelder.androidarchitecture.model.DataModel
+import com.ironelder.androidarchitecture.data.model.DataModel
 import com.ironelder.androidarchitecture.view.base.BasePresenter
 import retrofit2.Call
 import retrofit2.Callback

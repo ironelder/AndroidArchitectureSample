@@ -1,6 +1,6 @@
 package com.ironelder.androidarchitecture.view
 
-import com.ironelder.androidarchitecture.model.Document
+import com.ironelder.androidarchitecture.data.model.Document
 import com.ironelder.androidarchitecture.view.base.BaseContract
 
 interface MainContract {
