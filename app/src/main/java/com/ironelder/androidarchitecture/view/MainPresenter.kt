@@ -1,37 +1,29 @@
 package com.ironelder.androidarchitecture.view
 
-import com.ironelder.androidarchitecture.component.NetworkService
 import com.ironelder.androidarchitecture.data.model.DataModel
+import com.ironelder.androidarchitecture.data.repository.RemoteRepositoryImpl
 import com.ironelder.androidarchitecture.view.base.BasePresenter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter {
     override fun searchData(category: String, query: String) {
         view?.apply {
             showLoading()
         }
-        NetworkService.searchAPI.search(category, query).enqueue(object : Callback<DataModel>{
-            override fun onFailure(call: Call<DataModel>, t: Throwable) {
-                view?.apply {
-                    showErrorMessage(t.message.toString())
-                }
-            }
-
-            override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
-                view?.apply {
-                    onDataChanged(response.body()?.documents)
-                    hideLoading()
-                }
-            }
-        })
+        RemoteRepositoryImpl.searchForKakao(category, query, ::onSuccess, ::onFail)
     }
 
-    fun onFail(msg:String) {
+    private fun onFail(message: String) {
+        view?.apply {
+            hideLoading()
+            showErrorMessage(message)
+        }
     }
 
-    fun onSuccess(result:DataModel) {
+    private fun onSuccess(result: DataModel) {
+        view?.apply {
+            onDataChanged(result.documents)
+            hideLoading()
+        }
     }
 
 }
