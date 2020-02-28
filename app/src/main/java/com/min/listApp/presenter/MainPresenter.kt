@@ -2,12 +2,10 @@ package com.min.listApp.presenter
 
 import android.util.Log
 import com.min.listApp.model.Image
-import com.min.listApp.model.ImageDocument
 import com.min.listApp.model.SearchRetrofit
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class MainPresenter(var view: MainConstract.View): MainConstract.Presenter {
 
