@@ -8,15 +8,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-interface MainConstract {
-    interface View: BaseView<MainPresenter>{
-        fun updateList(documents: List<ImageDocument>)
-    }
-
-    interface Presenter: BasePresenter{
-        fun search(keyword: String)
-    }
-}
 
 class MainPresenter(var view: MainConstract.View): MainConstract.Presenter {
 
