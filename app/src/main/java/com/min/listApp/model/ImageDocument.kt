@@ -1,15 +1,4 @@
-package com.min.listApp
-
-data class Image(
-    val meta: ImageMeta,
-    val documents: List<ImageDocument>
-)
-
-data class ImageMeta(
-    val total_count: Int,
-    val pageable_count: Int,
-    val is_end: Boolean
-)
+package com.min.listApp.model
 
 data class ImageDocument(
     val collection: String,

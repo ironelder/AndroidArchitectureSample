@@ -1,4 +1,4 @@
-package com.min.listApp
+package com.min.listApp.model
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -6,7 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object SearchRetrofit {
 
     //TODO Class::class.java  ㅇㅣ게 무슨 뜻?
-    fun getService(): RetrofitService = retrofit.create(RetrofitService::class.java)
+    fun getService(): RetrofitService = retrofit.create(
+        RetrofitService::class.java)
 
     private val retrofit =
         Retrofit.Builder()

@@ -1,15 +1,17 @@
-package com.min.listApp
+package com.min.listApp.view
 
 import android.graphics.Color
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.min.listApp.model.ImageDocument
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_main_list_item.view.*
 import kotlin.random.Random
 
 class MainListAdapter(val items: List<ImageDocument>) : RecyclerView.Adapter<MainListHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder = MainListHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder =
+        MainListHolder(parent)
 
     override fun getItemCount(): Int = items.size
 
