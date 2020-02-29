@@ -9,6 +9,6 @@ abstract class BaseActivity<V: BaseConstract.View, P: BaseConstract.Presenter<V>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(resId)
-        presenter?.start()
+        presenter.start()
     }
 }
