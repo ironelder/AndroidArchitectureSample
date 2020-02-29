@@ -1,5 +1,6 @@
-package com.ironelder.androidarchitecture
+package com.ironelder.androidarchitecture.component
 
+import com.ironelder.androidarchitecture.common.CLIENT_BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
