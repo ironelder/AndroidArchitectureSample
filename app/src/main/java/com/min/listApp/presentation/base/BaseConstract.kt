@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.constract
+package com.min.listApp.presentation.base
 
 interface BaseConstract {
 
@@ -8,7 +8,6 @@ interface BaseConstract {
     }
 
     interface View {
-
         fun initLayout()
     }
 

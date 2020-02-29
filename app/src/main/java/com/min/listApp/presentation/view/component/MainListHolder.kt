@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.view
+package com.min.listApp.presentation.view.component
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
