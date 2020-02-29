@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="pink">#ffc0cb</color>
+    <color name="red_pink">#FF3F75</color>
+    <color name="lightpink">#FFB6C1</color>
+    <color name="hotpink">#FF69B4</color>
+    <color name="deeppink">#FF1493</color>
+    <color name="palevioletred">#DB7093</color>
+    <color name="mediumvioletred">#C71585</color>
+
+    <color name="layout_background">#f6f6f6</color>
+
+    <color name="audio_list_thumbnail_background">#ffdaeb</color>
+    <color name="audio_list_title_text">#000000</color>
+    <color name="audio_list_name_text">#636872</color>
+
+    <color name="audio_small_name_text">#FF69B4</color>
+
+    <!-- Transparent -->
+    <color name="transparent">#00000000</color>
+    <color name="transparent90">#E6ffffff</color>
+    <color name="transparent80">#CCffffff</color>
+    <color name="transparent70">#B3ffffff</color>
+    <color name="transparent55">#8Cffffff</color>
+    <color name="transparent30">#4DFFFFFF</color>
+    <color name="transparent10">#1AFFFFFF</color>
+    <color name="black_transparent80">#b3000000</color>
+    <color name="black_transparent70">#b3000000</color>
+    <color name="black_transparent55">#8C000000</color>
+    <color name="black_transparent50">#80000000</color>
+    <color name="black_transparent45">#73000000</color>
+    <color name="black_transparent30">#4D000000</color>
+    <color name="black_transparent10">#1A000000</color>
+
+    <!-- grey -->
+    <color name="pale_grey">#E1E4EC</color>
+    <color name="pale_grey_two">#F0F2F4</color>
+    <color name="cloudy_blue">#D0D5DF</color>
+    <color name="light_grey">#d0d5df</color>
+    <color name="bluey_grey">#ABB2C1</color>
+    <color name="steel">#828792</color>
+    <color name="slate_grey">#636872</color>
+    <color name="gunmetal">#4B4F57</color>
+
+    <color name="red">#FF0000</color>
+    <color name="water_melon">#ff3f75</color>
+    <color name="lighter_purple">#903FFA</color>
+    <color name="aqua">#0DD0CA</color>
+    <color name="aqua_trans">#000DD0CA</color>
+</resources>
