@@ -1,9 +1,9 @@
-package com.min.listApp.view
+package com.min.listApp.presentation.view
 
 import android.graphics.Color
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.min.listApp.model.ImageDocument
+import com.min.listApp.data.model.ImageDocument
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_main_list_item.view.*
 import kotlin.random.Random

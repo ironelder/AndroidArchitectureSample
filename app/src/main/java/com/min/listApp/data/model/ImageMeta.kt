@@ -1,4 +1,4 @@
-package com.min.listApp.model
+package com.min.listApp.data.model
 
 data class ImageMeta(
     val total_count: Int,

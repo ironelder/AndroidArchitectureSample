@@ -1,6 +1,6 @@
-package com.min.listApp.model
+package com.min.listApp.data.model
 
-import com.min.listApp.KAKAO_REST_API_KEY
+import com.min.listApp.data.common.KAKAO_REST_API_KEY
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

@@ -1,17 +1,19 @@
-package com.min.listApp.presenter
+package com.min.listApp.presentation.presenter
 
 import android.util.Log
-import com.min.listApp.model.Image
-import com.min.listApp.model.SearchRetrofit
+import com.min.listApp.data.model.Image
+import com.min.listApp.data.model.SearchRetrofit
+import com.min.listApp.presentation.constract.MainConstract
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainPresenter(var view: MainConstract.View): MainConstract.Presenter {
+class MainPresenter(override var view: MainConstract.View) :
+    MainConstract.Presenter {
 
     override fun search(keyword: String) {
         SearchRetrofit.getService()
-            .requestSearchImage(keyword = keyword, page = 1).enqueue(object:
+            .requestSearchImage(keyword = keyword, page = 1).enqueue(object :
                 Callback<Image> {
                 override fun onFailure(call: Call<Image>, t: Throwable) {
                     Log.e("MIN", "onFailure:${t.message}")
@@ -36,6 +38,7 @@ class MainPresenter(var view: MainConstract.View): MainConstract.Presenter {
 
     override fun start() {
         view.initLayout()
+        search("코로나")
     }
 
 }
