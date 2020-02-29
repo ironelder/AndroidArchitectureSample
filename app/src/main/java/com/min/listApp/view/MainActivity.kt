@@ -16,7 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity: BaseActivity(), MainConstract.View {
-    override lateinit var presenter: MainPresenter
+    override lateinit var presenter: MainConstract.Presenter
 
     override fun initLayout() {
         list_main.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
