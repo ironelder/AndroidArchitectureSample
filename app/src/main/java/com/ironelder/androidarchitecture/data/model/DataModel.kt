@@ -1,6 +1,8 @@
 package com.ironelder.androidarchitecture.data.model
 
-data class DataModel(
-    val documents: List<Document>,
-    val meta: Meta
+import com.ironelder.androidarchitecture.data.entity.Meta
+
+data class DataModel<T>(
+    val listItems: List<T>,
+    val is_end: Boolean
 )

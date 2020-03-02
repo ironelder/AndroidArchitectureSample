@@ -7,12 +7,12 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ironelder.androidarchitecture.R
-import com.ironelder.androidarchitecture.data.model.Document
+import com.ironelder.androidarchitecture.data.model.BlogListItem
 import kotlinx.android.synthetic.main.listitem.view.*
 
-class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemViewHolder>() {
+class SearchListAdapter<T> : RecyclerView.Adapter<SearchListAdapter<T>.SearchListItemViewHolder>() {
 
-    private var mItemList: ArrayList<Document> = arrayListOf()
+    private var mItemList: ArrayList<T> = arrayListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchListItemViewHolder {
         return SearchListItemViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -23,7 +23,7 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
         )
     }
 
-    fun setDocumentData(itemList: List<Document>?) {
+    fun setDocumentData(itemList: List<T>?) {
         if (itemList != null) {
             mItemList.addAll(itemList)
         }
@@ -39,8 +39,8 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
     }
 
     inner class SearchListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun setData(dc: Document) {
-            Glide.with(view.rootView.context).load(dc.thumbnail)
+        fun setData(dc: T) {
+            Glide.with(view.rootView.context).load((dc as BlogListItem).thumbnail)
                 .error(R.drawable.ic_launcher_background).into(view.iv_thumbnail)
             view.tv_title.text = HtmlCompat.fromHtml(dc.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
         }

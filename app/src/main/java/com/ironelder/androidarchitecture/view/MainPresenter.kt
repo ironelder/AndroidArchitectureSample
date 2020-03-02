@@ -21,7 +21,7 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
 
     private fun onSuccess(result: DataModel) {
         view?.apply {
-            onDataChanged(result.documents)
+            onDataChanged(result.listItems)
             hideLoading()
         }
     }

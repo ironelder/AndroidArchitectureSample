@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ironelder.androidarchitecture.R
 import com.ironelder.androidarchitecture.component.SearchListAdapter
-import com.ironelder.androidarchitecture.data.model.Document
+import com.ironelder.androidarchitecture.data.model.BlogListItem
 import com.ironelder.androidarchitecture.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,7 +15,7 @@ class MainActivity :
     MainContract.View {
     override val presenter = MainPresenter()
 
-    override fun onDataChanged(result: List<Document>?) {
+    override fun onDataChanged(result: List<BlogListItem>?) {
         (rv_searchList.adapter as? SearchListAdapter)?.setDocumentData(result)
     }
 
