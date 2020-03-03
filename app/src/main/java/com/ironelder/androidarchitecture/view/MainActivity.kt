@@ -5,17 +5,18 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ironelder.androidarchitecture.R
+import com.ironelder.androidarchitecture.component.NetworkUseCase
 import com.ironelder.androidarchitecture.component.SearchListAdapter
-import com.ironelder.androidarchitecture.data.model.BlogListItem
+import com.ironelder.androidarchitecture.data.model.ListItem
 import com.ironelder.androidarchitecture.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity :
     BaseActivity<MainContract.View, MainContract.Presenter>(R.layout.activity_main),
     MainContract.View {
-    override val presenter = MainPresenter()
+    override val presenter = MainPresenter(NetworkUseCase())
 
-    override fun onDataChanged(result: List<BlogListItem>?) {
+    override fun onDataChanged(result: List<ListItem>?) {
         (rv_searchList.adapter as? SearchListAdapter)?.setDocumentData(result)
     }
 

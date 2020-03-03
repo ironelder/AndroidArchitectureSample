@@ -1,6 +1,6 @@
 package com.ironelder.androidarchitecture.data.model
 
-data class BlogListItem(
+data class ListItem(
     val contents: String,
     val datetime: String,
     val title: String,

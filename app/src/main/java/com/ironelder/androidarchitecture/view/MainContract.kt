@@ -1,11 +1,11 @@
 package com.ironelder.androidarchitecture.view
 
-import com.ironelder.androidarchitecture.data.model.BlogListItem
+import com.ironelder.androidarchitecture.data.model.ListItem
 import com.ironelder.androidarchitecture.view.base.BaseContract
 
 interface MainContract {
     interface View : BaseContract.View {
-        fun onDataChanged(result: List<BlogListItem>?)
+        fun onDataChanged(result: List<ListItem>?)
         fun showErrorMessage(message: String)
         fun showLoading()
         fun hideLoading()

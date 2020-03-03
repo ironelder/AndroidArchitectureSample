@@ -1,15 +1,17 @@
 package com.ironelder.androidarchitecture.view
 
+import com.ironelder.androidarchitecture.component.NetworkUseCase
 import com.ironelder.androidarchitecture.data.model.DataModel
 import com.ironelder.androidarchitecture.data.repository.RemoteRepositoryImpl
 import com.ironelder.androidarchitecture.view.base.BasePresenter
 
-class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter {
+class MainPresenter(private val networkUseCase:NetworkUseCase) : BasePresenter<MainContract.View>(), MainContract.Presenter {
     override fun searchData(category: String, query: String) {
         view?.apply {
             showLoading()
         }
-        RemoteRepositoryImpl.searchForKakao(category, query, ::onSuccess, ::onFail)
+//        RemoteRepositoryImpl.searchForKakao(category, query, ::onSuccess, ::onFail)
+        networkUseCase.getSearchDataUseCase(category, query, ::onSuccess, ::onFail)
     }
 
     private fun onFail(message: String) {
