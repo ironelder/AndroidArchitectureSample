@@ -1,98 +1,33 @@
 package com.min.listApp.data.source
 
-import com.min.listApp.data.entity.KakaoSearchEntity
+import com.min.listApp.data.source.call.KakaoDataSourceCallable
 
-object KakaoSearchDataSourceImpl : KakaoSearchDataSource {
 
-    val searchRemote: KakaoSearchRemote = KakaoSearchRemote
-    val searchCache: KakaoSearchCache = KakaoSearchCache
+object KakaoSearchDataSourceImpl : KakaoSearchDataSource<KakaoDataSourceCallable> {
 
-    private fun getDataSource(query: String): KakaoSearchDataSource = if (useableCache(query)) searchCache else searchRemote
+    val searchRemote: KakaoSearchDataSource<KakaoDataSourceCallable> = KakaoSearchRemote
+    val searchCache: KakaoSearchDataSource<KakaoDataSourceCallable> = KakaoSearchCache
+
+    private fun getCallSource(
+        category: String,
+        query: String
+    ): KakaoSearchDataSource<KakaoDataSourceCallable> =
+        if (useableCache(category = category, query = query)) searchCache else searchRemote
 
     //캐시 사용 여부를 반환, 캐시는 미구현이기에 우선 false
-    private fun useableCache(query: String): Boolean = false
+    private fun useableCache(category: String, query: String): Boolean = false
 
-    override fun searchImage(
-            query: String,
-            sort: String,
-            page: Int,
-            size: Int
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
+    override fun search(
+        category: String,
+        query: String,
+        sort: String,
+        page: Int,
+        size: Int
+    ): KakaoDataSourceCallable = getCallSource(category = category, query = query).search(
+        category = category,
+        query = query,
+        sort = sort,
+        page = page,
+        size = size
     )
-
-
-    override fun searchWeb(
-            query: String,
-            sort: String,
-            page: Int,
-            size: Int
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
-    )
-
-    override fun searchVideoClip(
-            query: String,
-            sort: String,
-            page: Int,
-            size: Int
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
-    )
-
-    override fun searchBlog(
-            query: String,
-            sort: String,
-            page: Int,
-            size: Int
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
-    )
-
-    override fun searchTip(
-            query: String, sort: String, page: Int, size: Int
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
-    )
-
-    override fun searchBook(
-            query: String,
-            sort: String,
-            page: Int,
-            size: Int,
-            target: String
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
-    )
-
-    override fun searchKeyword(
-            query: String,
-            sort: String,
-            page: Int,
-            size: Int
-    ): KakaoSearchEntity = getDataSource(query = query).searchImage(
-            query = query,
-            sort = sort,
-            page = page,
-            size = size
-    )
-
 }

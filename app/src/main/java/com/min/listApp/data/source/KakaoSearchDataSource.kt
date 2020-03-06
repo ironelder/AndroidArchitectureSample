@@ -1,55 +1,11 @@
 package com.min.listApp.data.source
 
-import com.min.listApp.data.entity.KakaoSearchEntity
-
-interface KakaoSearchDataSource {
-    fun searchImage(
+interface KakaoSearchDataSource<T> {
+    fun search(
+        category: String, //카테고리
         query: String, //검색을 원하는 질의어
         sort: String = "recency", //accuracy (정확도순) or recency (최신순)
         page: Int = 1, //1-50 사이 Integer
         size: Int = 80 //1-80 사이 Integer
-    ): KakaoSearchEntity
-
-    fun searchWeb(
-        query: String, //검색을 원하는 질의어
-        sort: String = "recency", //accuracy (정확도순) or recency (최신순)
-        page: Int = 1, //1-50 사이 Integer
-        size: Int = 10 //1-50 사이 Integer
-    ): KakaoSearchEntity
-
-    fun searchVideoClip(
-        query: String, //검색을 원하는 질의어
-        sort: String = "recency", //accuracy (정확도순) or recency (최신순)
-        page: Int = 1, //1-15 사이 Integer
-        size: Int = 15 //1-30 사이 Integer
-    ): KakaoSearchEntity
-
-    fun searchBlog(
-        query: String, //검색을 원하는 질의어
-        sort: String = "recency", //accuracy (정확도순) or recency (최신순)
-        page: Int = 1, //1-50 사이 Integer
-        size: Int = 10 //1-50 사이 Integer
-    ): KakaoSearchEntity
-
-    fun searchTip(
-        query: String, //검색을 원하는 질의어
-        sort: String = "recency", //accuracy (정확도순) or recency (최신순)
-        page: Int = 1, //1-50 사이 Integer
-        size: Int = 10 //1-50 사이 Integer
-    ): KakaoSearchEntity
-
-    fun searchBook(
-        query: String, //검색을 원하는 질의어
-        sort: String = "recency", //accuracy (정확도순) or recency (최신순)
-        page: Int = 1, //1-100 사이 Integer
-        size: Int = 10, //1-50 사이 Integer
-        target: String //title (제목에서 검색) or isbn (ISBN에서 검색) or publisher (출판사에서 검색) or person(인명에서 검색)
-    ): KakaoSearchEntity
-
-    fun searchKeyword(
-        query: String, //검색을 원하는 질의어
-        sort: String = "recency", //accuracy (정확도순) or recency (최신순)
-        page: Int = 1, //1-100 사이 Integer
-        size: Int = 10 //1-50 사이 Integer
-    ): KakaoSearchEntity
+    ): T
 }

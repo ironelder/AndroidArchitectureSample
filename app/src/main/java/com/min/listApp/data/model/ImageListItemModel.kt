@@ -1,6 +1,6 @@
 package com.min.listApp.data.model
 
-data class ImageDocument(
+data class ImageListItemModel(
     val collection: String,
     val thumbnail_url: String,
     val image_url: String,

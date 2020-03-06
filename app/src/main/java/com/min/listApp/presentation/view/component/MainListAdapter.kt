@@ -2,12 +2,12 @@ package com.min.listApp.presentation.view.component
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.min.listApp.data.model.ImageDocument
+import com.min.listApp.data.model.ImageListItemModel
 import com.min.listApp.util.ColorUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_main_list_item.view.*
 
-class MainListAdapter(val items: List<ImageDocument>) : RecyclerView.Adapter<MainListHolder>() {
+class MainListAdapter(val items: List<ImageListItemModel>) : RecyclerView.Adapter<MainListHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder =
         MainListHolder(parent)

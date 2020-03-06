@@ -1,49 +1,29 @@
 package com.min.listApp.data.source
 
 import com.min.listApp.data.entity.KakaoSearchEntity
+import com.min.listApp.data.network.NetworkService
+import com.min.listApp.data.source.call.KakaoDataSourceCallable
+import com.min.listApp.data.source.call.KakaoRemoteCall
+import retrofit2.Call
 
-object KakaoSearchRemote: KakaoSearchDataSource {
-    override fun searchImage(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+typealias KakaoSearchDataSourceCall = KakaoRemoteCall
 
-    override fun searchWeb(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+fun Call<KakaoSearchEntity>.getCall(): KakaoRemoteCall {
+    return KakaoRemoteCall(call = this)
+}
 
-    override fun searchVideoClip(
+object KakaoSearchRemote : KakaoSearchDataSource<KakaoDataSourceCallable> {
+    override fun search(
+        category: String,
         query: String,
         sort: String,
         page: Int,
         size: Int
-    ): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun searchBlog(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun searchTip(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun searchBook(
-        query: String,
-        sort: String,
-        page: Int,
-        size: Int,
-        target: String
-    ): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun searchKeyword(
-        query: String,
-        sort: String,
-        page: Int,
-        size: Int
-    ): KakaoSearchEntity {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    ): KakaoSearchDataSourceCall = NetworkService.kakaoSearchAPI.search(
+        category = category,
+        keyword = query,
+        sort = sort,
+        page = page,
+        size = size
+    ).getCall()
 }

@@ -1,16 +1,16 @@
 package com.min.listApp.presentation.constract
 
-import com.min.listApp.data.model.ImageDocument
+import com.min.listApp.data.model.ImageListItemModel
 import com.min.listApp.presentation.base.BaseConstract
 
 interface MainConstract {
-    interface View:
+    interface View :
         BaseConstract.View {
-        fun updateList(documents: List<ImageDocument>)
+        fun updateList(listItemModels: List<ImageListItemModel>)
     }
 
-    interface Presenter:
+    interface Presenter :
         BaseConstract.Presenter<View> {
-        fun search(keyword: String)
+        fun searchKakao(category: String, keyword: String)
     }
 }
