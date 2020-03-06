@@ -1,25 +1,13 @@
-package com.min.listApp.data.source.impl
+package com.min.listApp.data.source
 
 import com.min.listApp.data.entity.KakaoSearchEntity
-import com.min.listApp.data.source.KakaoSearchRemoteDataSource
-import retrofit2.Call
 
-class KakaoSearchRemoteDataSourceImpl : KakaoSearchRemoteDataSource {
-    override fun searchImage(
-        query: String,
-        sort: String,
-        page: Int,
-        size: Int
-    ): Call<KakaoSearchEntity> {
+object KakaoSearchCache : KakaoSearchDataSource {
+    override fun searchImage(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun searchWeb(
-        query: String,
-        sort: String,
-        page: Int,
-        size: Int
-    ): Call<KakaoSearchEntity> {
+    override fun searchWeb(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -28,25 +16,15 @@ class KakaoSearchRemoteDataSourceImpl : KakaoSearchRemoteDataSource {
         sort: String,
         page: Int,
         size: Int
-    ): Call<KakaoSearchEntity> {
+    ): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun searchBlog(
-        query: String,
-        sort: String,
-        page: Int,
-        size: Int
-    ): Call<KakaoSearchEntity> {
+    override fun searchBlog(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun searchTip(
-        query: String,
-        sort: String,
-        page: Int,
-        size: Int
-    ): Call<KakaoSearchEntity> {
+    override fun searchTip(query: String, sort: String, page: Int, size: Int): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -56,7 +34,7 @@ class KakaoSearchRemoteDataSourceImpl : KakaoSearchRemoteDataSource {
         page: Int,
         size: Int,
         target: String
-    ): Call<KakaoSearchEntity> {
+    ): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -65,7 +43,7 @@ class KakaoSearchRemoteDataSourceImpl : KakaoSearchRemoteDataSource {
         sort: String,
         page: Int,
         size: Int
-    ): Call<KakaoSearchEntity> {
+    ): KakaoSearchEntity {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
