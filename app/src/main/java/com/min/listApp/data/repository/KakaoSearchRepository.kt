@@ -2,6 +2,7 @@ package com.min.listApp.data.repository
 
 import com.min.listApp.data.entity.KakaoSearchEntity
 import com.min.listApp.data.repository.base.BaseRepository
+import com.min.listApp.data.source.call.KakaoDataSourceCallable
 
 typealias KakaoSearchResponse = ((KakaoSearchEntity) -> Unit)
 typealias KakaoSearchFailure = ((errorMessage: String) -> Unit)
@@ -15,5 +16,5 @@ interface KakaoSearchRepository : BaseRepository {
         size: Int = 10, //1-80 사이 Integer
         response: KakaoSearchResponse = {},
         failure: KakaoSearchFailure = {}
-    )
+    ): KakaoDataSourceCallable
 }

@@ -1,6 +1,7 @@
 package com.min.listApp.data.repository
 
 import com.min.listApp.data.source.KakaoSearchDataSourceImpl
+import com.min.listApp.data.source.call.KakaoDataSourceCallable
 
 object KakaoSearchRepositoryImpl : KakaoSearchRepository {
 
@@ -14,7 +15,7 @@ object KakaoSearchRepositoryImpl : KakaoSearchRepository {
         size: Int,
         response: KakaoSearchResponse,
         failure: KakaoSearchFailure
-    ) {
+    ): KakaoDataSourceCallable {
         val call = dataSource.search(
             category = category,
             query = query,
@@ -24,6 +25,7 @@ object KakaoSearchRepositoryImpl : KakaoSearchRepository {
         )
         call.errorCallback = failure
         call.succeedCallback = response
-        call.execute()
+
+        return call
     }
 }
