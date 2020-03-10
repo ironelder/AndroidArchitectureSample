@@ -3,7 +3,6 @@ package com.ironelder.androidarchitecture.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ironelder.androidarchitecture.R
 import com.ironelder.androidarchitecture.component.NetworkUseCase
 import com.ironelder.androidarchitecture.component.SearchListAdapter
@@ -34,11 +33,7 @@ class MainActivity :
 
     override fun initializedView(savedInstanceState: Bundle?) {
         rv_searchList.apply {
-            adapter =
-                SearchListAdapter()
-            val linearLayoutManager = LinearLayoutManager(this@MainActivity)
-            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-            layoutManager = linearLayoutManager
+            adapter = SearchListAdapter()
         }
         presenter.searchData("blog", "test")
     }
