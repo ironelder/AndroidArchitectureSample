@@ -1,22 +1,23 @@
 package com.ironelder.androidarchitecture.view
 
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Toast
 import com.ironelder.androidarchitecture.R
 import com.ironelder.androidarchitecture.component.NetworkUseCase
 import com.ironelder.androidarchitecture.component.SearchListAdapter
 import com.ironelder.androidarchitecture.data.model.ListItem
+import com.ironelder.androidarchitecture.databinding.ActivityMainBinding
 import com.ironelder.androidarchitecture.view.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity :
-    BaseActivity<MainContract.View, MainContract.Presenter>(R.layout.activity_main),
+    BaseActivity<MainContract.View, MainContract.Presenter, ActivityMainBinding>(R.layout.activity_main),
     MainContract.View {
     override val presenter = MainPresenter(NetworkUseCase())
 
     override fun onDataChanged(result: List<ListItem>?) {
-        (rv_searchList.adapter as? SearchListAdapter)?.setDocumentData(result)
+        Log.d("ironelderLog", "result = ${result.isNullOrEmpty().toString()} , itemSize = ${result?.size}")
+        binding.items = result
     }
 
     override fun showErrorMessage(message: String) {
@@ -24,17 +25,19 @@ class MainActivity :
     }
 
     override fun showLoading() {
-        pb_loading.visibility = View.VISIBLE
+//        pb_loading.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        pb_loading.visibility = View.GONE
+//        pb_loading.visibility = View.GONE
     }
 
     override fun initializedView(savedInstanceState: Bundle?) {
-        rv_searchList.apply {
+        Log.d("ironelderLog", "initializedView ")
+        with(binding.rvSearchList){
             adapter = SearchListAdapter()
         }
+        Log.d("ironelderLog", "initializedView searchData")
         presenter.searchData("blog", "test")
     }
 }

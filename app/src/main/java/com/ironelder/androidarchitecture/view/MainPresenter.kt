@@ -1,5 +1,6 @@
 package com.ironelder.androidarchitecture.view
 
+import android.util.Log
 import com.ironelder.androidarchitecture.component.NetworkUseCase
 import com.ironelder.androidarchitecture.data.model.DataModel
 import com.ironelder.androidarchitecture.data.repository.RemoteRepositoryImpl
@@ -18,6 +19,7 @@ class MainPresenter(private val networkUseCase:NetworkUseCase) : BasePresenter<M
         view?.apply {
             hideLoading()
             showErrorMessage(message)
+            Log.d("ironelderLog", "message $message ")
         }
     }
 
