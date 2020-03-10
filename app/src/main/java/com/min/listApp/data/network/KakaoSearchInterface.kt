@@ -13,7 +13,6 @@ const val KAKAO_REST_API_HEADERS = "Authorization: KakaoAK $KAKAO_REST_API_KEY"
 
 
 interface KakaoSearchInterface {
-
     @Headers(KAKAO_REST_API_HEADERS)
     @GET("v2/search/{category}")
     fun search(
