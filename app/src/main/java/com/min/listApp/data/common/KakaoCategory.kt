@@ -1,6 +1,6 @@
 package com.min.listApp.data.common
 
-enum class KakaoCategory(val category: String, val defPage: Int, val defSize: Int) {
+enum class KakaoCategory(val categoryString: String, val defPage: Int, val defSize: Int) {
     WEB("web", 50, 50),
     VCLIP("vclip", 15, 30),
     IMAGE("image", 50, 80),
@@ -11,7 +11,7 @@ enum class KakaoCategory(val category: String, val defPage: Int, val defSize: In
 
     companion object {
         fun fromString(category: String): KakaoCategory {
-            return KakaoCategory.values().find { it.category == category } ?: IMAGE
+            return KakaoCategory.values().find { it.categoryString == category } ?: IMAGE
         }
     }
 }

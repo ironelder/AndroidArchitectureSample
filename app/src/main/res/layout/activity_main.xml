@@ -7,20 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".presentation.view.MainActivity">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_main"
-        android:layout_width="0px"
-        android:layout_height="0px"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/category_list"
-        app:layout_constraintVertical_bias="0.0" />
-
     <EditText
         android:id="@+id/search_input"
         android:layout_width="0px"
@@ -62,61 +48,72 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:checked="true"
-                    android:text="웹"
                     android:tag="web"
+                    android:text="웹"
                     android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/category_list_vclip"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:text="동영상"
                     android:tag="vclip"
+                    android:text="동영상"
                     android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/category_list_image"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:text="이미지"
                     android:tag="image"
+                    android:text="이미지"
                     android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/category_list_blog"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:text="블로그"
                     android:tag="blog"
+                    android:text="블로그"
                     android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/category_list_tip"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:text="팁"
                     android:tag="tip"
+                    android:text="팁"
                     android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/category_list_book"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:text="책"
                     android:tag="book"
+                    android:text="책"
                     android:textSize="10dp" />
 
                 <RadioButton
                     android:id="@+id/category_list_cafe"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:text="카페"
                     android:tag="cafe"
+                    android:text="카페"
                     android:textSize="10dp" />
             </RadioGroup>
         </LinearLayout>
-
     </HorizontalScrollView>
 
+    <FrameLayout
+        android:id="@+id/frame_main"
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#40ffff00"
+        app:layout_constraintTop_toBottomOf="@id/category_list"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

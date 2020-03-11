@@ -3,14 +3,15 @@ package com.min.listApp.data.mapper
 import com.min.listApp.data.entity.KakaoSearchDocumentEntity
 import com.min.listApp.data.entity.KakaoSearchEntity
 import com.min.listApp.data.entity.KakaoSearchMetaEntity
-import com.min.listApp.data.model.ImageListItemModel
-import com.min.listApp.data.model.ImageListMetaModel
-import com.min.listApp.data.model.ImageListModel
+import com.min.listApp.data.model.KakaoImageListItemModel
+import com.min.listApp.data.model.KakaoListItemModel
+import com.min.listApp.data.model.KakaoListModel
+import com.min.listApp.data.model.KakaoListMeta
 
 object KakaoSearchEntityMapper {
-    private fun toImageListItem(documents: List<KakaoSearchDocumentEntity>): ArrayList<ImageListItemModel> =
+    private fun toImageListItem(documents: List<KakaoSearchDocumentEntity>): ArrayList<KakaoImageListItemModel> =
         documents.mapTo(destination = ArrayList()) {
-            ImageListItemModel(
+            KakaoImageListItemModel(
                 collection = it.collection,
                 thumbnail_url = it.thumbnail_url,
                 datetime = it.datetime,
@@ -22,15 +23,15 @@ object KakaoSearchEntityMapper {
             )
         }
 
-    private fun toImageListMeta(meta: KakaoSearchMetaEntity): ImageListMetaModel = meta.let {
-        ImageListMetaModel(
+    private fun toImageListMeta(meta: KakaoSearchMetaEntity): KakaoListMeta = meta.let {
+        KakaoListMeta(
             total_count = it.total_count,
             is_end = it.is_end,
             pageable_count = it.pageable_count
         )
     }
 
-    fun toImageListModel(entity: KakaoSearchEntity): ImageListModel = ImageListModel(
+    fun toImageListModel(entity: KakaoSearchEntity): KakaoListModel<KakaoListItemModel> = KakaoListModel (
         toImageListMeta(entity.meta), toImageListItem(entity.documents)
     )
 }

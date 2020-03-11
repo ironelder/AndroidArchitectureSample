@@ -15,7 +15,7 @@ class MainPresenter(override var view: MainConstract.View) : MainConstract.Prese
 
     override fun searchKakao(keyword: String) {
         kakaoSearchUseCase.getSearch(
-            category = mCategory.category,
+            category = mCategory.categoryString,
             keyword = keyword,
             size = mCategory.defSize,
             page = mCategory.defPage,
