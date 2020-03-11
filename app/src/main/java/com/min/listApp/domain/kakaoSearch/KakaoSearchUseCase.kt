@@ -1,5 +1,6 @@
 package com.min.listApp.domain.kakaoSearch
 
+import com.min.listApp.data.common.KakaoCategory
 import com.min.listApp.data.mapper.KakaoSearchEntityMapper
 import com.min.listApp.data.model.KakaoListItemModel
 import com.min.listApp.data.model.KakaoListModel
@@ -26,7 +27,7 @@ class KakaoSearchUseCase {
             page = page,
             size = size,
             response = {
-                responseSuccess(KakaoSearchEntityMapper.toImageListModel(it))
+                responseSuccess(KakaoSearchEntityMapper.toListModel(entity = it, category = KakaoCategory.fromString(category = category)))
             },
             failure = {
                 responseFailure(it)

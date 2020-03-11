@@ -10,8 +10,7 @@ abstract class BaseFragment<V : BaseConstract.View, P : BaseConstract.Presenter<
     abstract val presenter: P
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        inflater.inflate(resId, container, true)
-        return view
+        return inflater.inflate(resId, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

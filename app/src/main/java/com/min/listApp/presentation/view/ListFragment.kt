@@ -26,7 +26,7 @@ class ListFragment(resId: Int) : BaseFragment<ListFragmentConstract.View, ListFr
     override val presenter: ListFragmentConstract.Presenter = ListFragmentPresenter(this)
 
     override fun initLayout() {
-
+        
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

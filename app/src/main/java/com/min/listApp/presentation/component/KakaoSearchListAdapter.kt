@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.view.component
+package com.min.listApp.presentation.component
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
