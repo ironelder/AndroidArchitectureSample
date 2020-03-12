@@ -1,11 +1,12 @@
 package com.min.listApp.presentation.constract
 
+import com.min.listApp.data.common.KakaoCategory
 import com.min.listApp.data.model.KakaoListItemModel
 import com.min.listApp.presentation.base.BaseConstract
 
 interface MainConstract {
     interface View : BaseConstract.View {
-        fun updateList(listItemModels: List<KakaoListItemModel>)
+        fun updateList(category: KakaoCategory, listItemModels: List<KakaoListItemModel>)
     }
 
     interface Presenter : BaseConstract.Presenter<View> {

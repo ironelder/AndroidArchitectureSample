@@ -19,7 +19,7 @@ class MainPresenter(override var view: MainConstract.View) : MainConstract.Prese
             keyword = keyword,
             size = mCategory.defSize,
             page = mCategory.defPage,
-            responseSuccess = { view.updateList(it.listItemModels) },
+            responseSuccess = { view.updateList(category = mCategory, listItemModels = it.listItemModels) },
             responseFailure = { Log.e("MIN", "Kakao Search Error => $it") }
         )
     }
