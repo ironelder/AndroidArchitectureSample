@@ -7,7 +7,7 @@ import com.min.listApp.presentation.constract.MainConstract
 
 class MainPresenter(override var view: MainConstract.View) : MainConstract.Presenter {
 
-    private var mCategory = KakaoCategory.IMAGE
+    private var mCategory = KakaoCategory.WEB
 
     private val kakaoSearchUseCase by lazy {
         return@lazy KakaoSearchUseCase()
