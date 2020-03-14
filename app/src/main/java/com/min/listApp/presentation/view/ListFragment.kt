@@ -3,13 +3,14 @@ package com.min.listApp.presentation.view
 import android.os.Bundle
 import com.min.listApp.R
 import com.min.listApp.data.common.KakaoCategory
+import com.min.listApp.databinding.FragmentMainBinding
 import com.min.listApp.presentation.base.BaseFragment
 import com.min.listApp.presentation.constract.ListFragmentConstract
 import com.min.listApp.presentation.presenter.ListFragmentPresenter
 
 private const val ARG_PARAM_CATEGORY = "KAKAO_CATEGORY"
 
-class ListFragment(resId: Int) : BaseFragment<ListFragmentConstract.View, ListFragmentConstract.Presenter>(resId), ListFragmentConstract.View {
+class ListFragment(resId: Int) : BaseFragment<ListFragmentConstract.View, ListFragmentConstract.Presenter, FragmentMainBinding>(resId), ListFragmentConstract.View {
 
     private var argParamCategory: KakaoCategory? = null
 
