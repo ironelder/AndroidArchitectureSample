@@ -24,7 +24,7 @@ data class KakaoSearchDocumentEntity(
     val isbn: String,
     val authors: List<String>,
     val publisher: String,
-    val translators: String,
+    val translators: List<String>,
     val price: Int,
     val sale_price: Int,
     val status: String,
