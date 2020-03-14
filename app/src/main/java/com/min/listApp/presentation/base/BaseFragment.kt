@@ -17,4 +17,10 @@ abstract class BaseFragment<V : BaseConstract.View, P : BaseConstract.Presenter<
         presenter.start()
         return binding.root
     }
+
+
+    override fun onDestroyView() {
+        presenter.end()
+        super.onDestroyView()
+    }
 }

@@ -32,4 +32,8 @@ class MainPresenter(override var view: MainConstract.View) : MainConstract.Prese
         view.initLayout()
     }
 
+    override fun end() {
+
+    }
+
 }

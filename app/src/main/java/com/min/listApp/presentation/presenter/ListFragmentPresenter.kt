@@ -7,4 +7,7 @@ class ListFragmentPresenter(override var view: ListFragmentConstract.View) : Lis
     override fun start() {
 
     }
+
+    override fun end() {
+    }
 }

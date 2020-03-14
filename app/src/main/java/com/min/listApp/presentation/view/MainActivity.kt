@@ -19,6 +19,7 @@ class MainActivity : BaseActivity<MainConstract.View, MainConstract.Presenter, A
     var mainFragment: ListFragment = ListFragment.newInstance(KakaoCategory.IMAGE)
 
 
+    @Suppress("UNCHECKED_CAST")
     override fun updateList(category: KakaoCategory, listItemModels: List<KakaoListItemModel>) = when (category) {
         //FIXME: Collections<T> 의 T의 경우 컴파일 시 타입이 제거됨, 이에 따라 타입캐스팅이 동작하지 못하게 되며, 이로 인해 오류가 발생할 수 있어 Warnning이 발생함
         KakaoCategory.WEB -> {mainFragment.binding.listMain.adapter = KakaoSearchListAdapter(ArrayList<KakaoImageListItemModel>())}
