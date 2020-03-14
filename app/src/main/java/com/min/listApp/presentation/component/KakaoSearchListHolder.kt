@@ -18,7 +18,6 @@ class KakaoSearchListHolder(parent: ViewGroup) : BaseViewHolder<ItemListMainBind
     override fun bind(data: KakaoImageListItemModel) {
         binding.apply {
             item = data
-            holder = this@KakaoSearchListHolder
             binding.root.setBackgroundColor(ColorUtil.randomColor())
             binding.executePendingBindings()
         }

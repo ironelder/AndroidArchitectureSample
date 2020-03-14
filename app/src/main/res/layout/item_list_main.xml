@@ -5,10 +5,6 @@
 
     <data>
         <variable
-            name="holder"
-            type="com.min.listApp.presentation.component.KakaoSearchListHolder" />
-
-        <variable
             name="item"
             type="com.min.listApp.data.model.KakaoImageListItemModel" />
     </data>
