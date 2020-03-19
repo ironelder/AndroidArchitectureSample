@@ -11,14 +11,14 @@ import com.ironelder.androidarchitecture.data.model.ListItem
 
 @BindingAdapter("setListItems")
 fun setListItems(view: RecyclerView, items: List<ListItem>?) {
-    Log.d("ironelderLog", items.isNullOrEmpty().toString())
-    val adapter: SearchListAdapter = view.adapter as SearchListAdapter
-    adapter.setDocumentData(items)
+//    Log.d("ironelderLog", items.isNullOrEmpty().toString())
+//    val adapter: SearchListAdapter = view.adapter as SearchListAdapter
+//    adapter.setDocumentData(items)
 }
 
 @BindingAdapter("loadImageUrl")
 fun loadImageUrl(view: ImageView, url: String?) {
-    Glide.with(view.context).load(url).centerCrop()
-        .placeholder(R.drawable.ic_launcher_background)
-        .error(R.drawable.ic_launcher_background).into(view)
+//    Glide.with(view.context).load(url).centerCrop()
+//        .placeholder(R.drawable.ic_launcher_background)
+//        .error(R.drawable.ic_launcher_background).into(view)
 }

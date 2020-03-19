@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture.component
+package com.ironelder.androidarchitecture.data.service
 
 import com.ironelder.androidarchitecture.common.REST_API_KEY
 import com.ironelder.androidarchitecture.data.entity.Contents

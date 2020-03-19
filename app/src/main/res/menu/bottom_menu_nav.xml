@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/webFragment"
+        android:icon="@mipmap/ic_web"
+        android:title="@string/bottom_nav_title_web"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/imageFragment"
+        android:icon="@mipmap/ic_image"
+        android:title="@string/bottom_nav_title_image"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/blogFragment"
+        android:icon="@mipmap/ic_blog"
+        android:title="@string/bottom_nav_title_blog"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cafeFragment"
+        android:icon="@mipmap/ic_cafe"
+        android:title="@string/bottom_nav_title_cafe"
+        app:showAsAction="ifRoom" />
+</menu>

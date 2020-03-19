@@ -3,7 +3,7 @@ package com.ironelder.androidarchitecture.view
 import com.ironelder.androidarchitecture.data.model.ListItem
 import com.ironelder.androidarchitecture.view.base.BaseContract
 
-interface MainContract {
+interface WebContract {
     interface View : BaseContract.View {
         fun onDataChanged(result: List<ListItem>?)
         fun showErrorMessage(message: String)

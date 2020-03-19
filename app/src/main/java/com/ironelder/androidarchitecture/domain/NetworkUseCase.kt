@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture.component
+package com.ironelder.androidarchitecture.domain
 
 import com.ironelder.androidarchitecture.data.entity.Contents
 import com.ironelder.androidarchitecture.data.model.DataModel

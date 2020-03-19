@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture.component
+package com.ironelder.androidarchitecture.data.service
 
 import com.ironelder.androidarchitecture.common.CLIENT_BASE_URL
 import retrofit2.Retrofit

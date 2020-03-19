@@ -1,6 +1,6 @@
 package com.ironelder.androidarchitecture.data.source
 
-import com.ironelder.androidarchitecture.component.NetworkService
+import com.ironelder.androidarchitecture.data.service.NetworkService
 import com.ironelder.androidarchitecture.data.entity.Contents
 import retrofit2.Call
 
