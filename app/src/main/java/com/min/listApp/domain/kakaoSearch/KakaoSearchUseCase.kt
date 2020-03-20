@@ -6,30 +6,25 @@ import com.min.listApp.data.model.KakaoListItemModel
 import com.min.listApp.data.model.KakaoListModel
 import com.min.listApp.data.repository.KakaoSearchRepository
 import com.min.listApp.data.repository.KakaoSearchRepositoryImpl
+import io.reactivex.Single
 
-class KakaoSearchUseCase {
-    val kakaoRepository: KakaoSearchRepository = KakaoSearchRepositoryImpl
+class KakaoSearchUseCase(val kakaoRepository: KakaoSearchRepository) {
 
     fun getSearch (
         category: String,
         keyword: String,
         sort: String = "recency",
         page: Int = 1,
-        size: Int = 80,
-        responseSuccess: ((response: KakaoListModel<KakaoListItemModel>) -> Unit),
-        responseFailure: (message: String) -> Unit
-    ) {
-        kakaoRepository.search(
+        size: Int = 80
+    ): Single<KakaoListModel<KakaoListItemModel>> {
+
+        return kakaoRepository.search(
             category = category,
             query = keyword,
             sort = sort,
             page = page,
-            size = size,
-            response = {
-                responseSuccess(KakaoSearchEntityMapper.toListModel(entity = it, category = KakaoCategory.fromString(category = category)))
-            },
-            failure = {
-                responseFailure(it)
-            }).execute()
+            size = size).map {
+            KakaoSearchEntityMapper.toListModel(it, category = KakaoCategory.fromString(category))
+        }
     }
 }

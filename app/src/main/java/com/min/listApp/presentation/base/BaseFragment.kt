@@ -7,10 +7,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.min.listApp.presentation.component.Disposable
+import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseFragment<V : BaseConstract.View, P : BaseConstract.Presenter<V>, B: ViewDataBinding>(val resId: Int) : Fragment() {
+abstract class BaseFragment<V : BaseConstract.View, P : BaseConstract.Presenter<V>, B: ViewDataBinding>(val resId: Int) : Fragment(), Disposable {
+
     abstract val presenter: P
     lateinit var binding: B
+    override val compositeDisposable = CompositeDisposable()
+
+    override fun addDisposable(disposable: io.reactivex.disposables.Disposable) {
+        compositeDisposable.add(disposable)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, resId, container, false)
@@ -21,6 +29,7 @@ abstract class BaseFragment<V : BaseConstract.View, P : BaseConstract.Presenter<
 
     override fun onDestroyView() {
         presenter.end()
+        compositeDisposable.dispose()
         super.onDestroyView()
     }
 }

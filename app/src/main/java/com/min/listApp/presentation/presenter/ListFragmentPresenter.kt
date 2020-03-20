@@ -2,15 +2,18 @@ package com.min.listApp.presentation.presenter
 
 import android.util.Log
 import com.min.listApp.data.common.KakaoCategory
+import com.min.listApp.data.repository.KakaoSearchRepositoryImpl
 import com.min.listApp.domain.kakaoSearch.KakaoSearchUseCase
 import com.min.listApp.presentation.constract.ListFragmentConstract
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ListFragmentPresenter(override var view: ListFragmentConstract.View) : ListFragmentConstract.Presenter {
 
     private var mCategory = KakaoCategory.WEB
 
     private val kakaoSearchUseCase by lazy {
-        return@lazy KakaoSearchUseCase()
+        return@lazy KakaoSearchUseCase(KakaoSearchRepositoryImpl)
     }
 
     override fun searchKakao(keyword: String) {
@@ -18,10 +21,14 @@ class ListFragmentPresenter(override var view: ListFragmentConstract.View) : Lis
             category = mCategory.categoryString,
             keyword = keyword,
             size = mCategory.defSize,
-            page = mCategory.defPage,
-            responseSuccess = { view.updateList(category = mCategory, listItemModels = it.listItemModels) },
-            responseFailure = { Log.e("MIN", "Kakao Search Error => $it") }
-        )
+            page = mCategory.defPage
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                view.updateList(category = mCategory, listItemModels = it.listItemModels)
+            }, {
+                Log.e("MIN", "KakaoSearch Error => ${it.message}")
+            }).let { view.addDisposable(disposable = it) }
     }
 
     override fun setCategory(category: String) {

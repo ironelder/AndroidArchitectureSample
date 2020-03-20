@@ -2,29 +2,21 @@ package com.min.listApp.data.source
 
 import com.min.listApp.data.entity.KakaoSearchEntity
 import com.min.listApp.data.network.NetworkService
-import com.min.listApp.data.source.call.KakaoDataSourceCallable
-import com.min.listApp.data.source.call.KakaoRemoteCall
-import io.reactivex.Flowable
 import io.reactivex.Single
 
-typealias KakaoSearchDataSourceCall = KakaoRemoteCall
 
-fun Single<KakaoSearchEntity>.getCall(): KakaoRemoteCall {
-    return KakaoRemoteCall(call = this)
-}
-
-object KakaoSearchRemote : KakaoSearchDataSource<KakaoDataSourceCallable> {
+object KakaoSearchRemote : KakaoSearchDataSource<Single<KakaoSearchEntity>> {
     override fun search(
         category: String,
         query: String,
         sort: String,
         page: Int,
         size: Int
-    ): KakaoSearchDataSourceCall = NetworkService.kakaoSearchAPI.search(
+    ): Single<KakaoSearchEntity> = NetworkService.kakaoSearchAPI.search(
         category = category,
         keyword = query,
         sort = sort,
         page = page,
         size = size
-    ).getCall()
+    )
 }

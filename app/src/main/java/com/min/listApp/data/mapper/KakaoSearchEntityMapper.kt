@@ -9,17 +9,19 @@ import com.min.listApp.data.model.*
 object KakaoSearchEntityMapper {
     @Suppress("UNCHECKED_CAST")
     private fun <T : KakaoListItemModel> toImageListItem(documents: List<KakaoSearchDocumentEntity>): ArrayList<T> = documents.mapTo(destination = ArrayList()) {
-        KakaoImageListItemModel(
-            collection = it.collection,
-            datetime = it.datetime,
-            display_sitename = it.display_sitename,
-            doc_url = it.doc_url,
-            height = it.height,
-            image_url = it.image_url,
-            thumbnail_url = it.thumbnail_url,
-            width = it.width
-        )
+        toImageModel(it = it)
     } as ArrayList<T>
+
+    fun toImageModel(it: KakaoSearchDocumentEntity): KakaoListItemModel = KakaoImageListItemModel(
+        collection = it.collection,
+        datetime = it.datetime,
+        display_sitename = it.display_sitename,
+        doc_url = it.doc_url,
+        height = it.height,
+        image_url = it.image_url,
+        thumbnail_url = it.thumbnail_url,
+        width = it.width
+    )
 
     @Suppress("UNCHECKED_CAST")
     private fun <T : KakaoListItemModel> toVClipListItem(documents: List<KakaoSearchDocumentEntity>): ArrayList<T> =

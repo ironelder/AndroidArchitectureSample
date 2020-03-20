@@ -1,5 +1,7 @@
 package com.min.listApp.presentation.base
 
+import com.min.listApp.presentation.component.Disposable
+
 interface BaseConstract {
 
     interface Presenter<V : View> {
@@ -8,7 +10,7 @@ interface BaseConstract {
         fun end()
     }
 
-    interface View {
+    interface View: Disposable {
         fun initLayout()
     }
 
