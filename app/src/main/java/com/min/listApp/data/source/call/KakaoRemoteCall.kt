@@ -1,29 +1,24 @@
 package com.min.listApp.data.source.call
 
 import com.min.listApp.data.entity.KakaoSearchEntity
+import io.reactivex.Flowable
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class KakaoRemoteCall(val call: Call<KakaoSearchEntity>) : KakaoDataSourceCallable() {
+class KakaoRemoteCall(val call: Single<KakaoSearchEntity>) : KakaoDataSourceCallable() {
     override fun execute() {
-        call.enqueue(object : Callback<KakaoSearchEntity> {
-            override fun onFailure(call: Call<KakaoSearchEntity>, t: Throwable) {
-                errorCallback?.let { t.message?.let(it) }
+        call.subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ entity ->
+            succeedCallback?.let {
+                it(entity)
             }
-
-            override fun onResponse(
-                call: Call<KakaoSearchEntity>,
-                response: Response<KakaoSearchEntity>
-            ) {
-
-                if (response.isSuccessful) {
-                    succeedCallback?.let { response.body()?.let(it) }
-                } else {
-                    errorCallback?.let { response.message().let(it) }
-                }
-
-            }
+        }, {throwable ->
+            errorCallback?.let { throwable.message?.let(it) }
         })
     }
 }

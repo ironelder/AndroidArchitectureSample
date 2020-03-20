@@ -9,9 +9,14 @@ enum class KakaoCategory(val categoryString: String, val defPage: Int, val defSi
     BOOK("book", 100, 50),
     CAFE("cafe", 50, 50);
 
+
+
     companion object {
+
+
         fun fromString(category: String): KakaoCategory {
             return KakaoCategory.values().find { it.categoryString == category } ?: IMAGE
         }
     }
 }
+

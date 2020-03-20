@@ -1,7 +1,7 @@
 package com.min.listApp.data.network
 
 import com.min.listApp.data.entity.KakaoSearchEntity
-import retrofit2.Call
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -21,6 +21,6 @@ interface KakaoSearchInterface {
         @Query("sort") sort: String = "recency",
         @Query("page") page: Int = 1,
         @Query("size") size: Int = 10
-    ): Call<KakaoSearchEntity>
+    ): Single<KakaoSearchEntity>
 }
 

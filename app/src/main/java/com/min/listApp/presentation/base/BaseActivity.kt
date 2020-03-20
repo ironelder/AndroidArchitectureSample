@@ -18,6 +18,7 @@ abstract class BaseActivity<V : BaseConstract.View, P : BaseConstract.Presenter<
 
     override fun onDestroy() {
         presenter.end()
+
         super.onDestroy()
     }
 }

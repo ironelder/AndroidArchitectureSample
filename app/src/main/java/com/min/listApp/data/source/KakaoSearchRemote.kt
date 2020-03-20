@@ -4,11 +4,12 @@ import com.min.listApp.data.entity.KakaoSearchEntity
 import com.min.listApp.data.network.NetworkService
 import com.min.listApp.data.source.call.KakaoDataSourceCallable
 import com.min.listApp.data.source.call.KakaoRemoteCall
-import retrofit2.Call
+import io.reactivex.Flowable
+import io.reactivex.Single
 
 typealias KakaoSearchDataSourceCall = KakaoRemoteCall
 
-fun Call<KakaoSearchEntity>.getCall(): KakaoRemoteCall {
+fun Single<KakaoSearchEntity>.getCall(): KakaoRemoteCall {
     return KakaoRemoteCall(call = this)
 }
 
