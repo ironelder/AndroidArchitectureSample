@@ -39,11 +39,7 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
     class SearchListItemViewHolder(private val binding: ListitemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item:ListItem){
             binding.item = item
-        }
-        fun setData(dc: ListItem) {
-//            Glide.with(view.rootView.context).load(dc.thumbnail)
-//                .error(R.drawable.ic_launcher_background).into(view.iv_thumbnail)
-//            view.tv_title.text = HtmlCompat.fromHtml(dc.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
+            binding.executePendingBindings()
         }
     }
 }

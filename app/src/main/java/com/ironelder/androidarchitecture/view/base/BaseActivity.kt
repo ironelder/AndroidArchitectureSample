@@ -16,6 +16,10 @@ private val resLayoutId: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, resLayoutId)
+        presenter.createView(this as VIEW)
+        initializedView(savedInstanceState)
+        binding.lifecycleOwner = this
 //        binding = DataBindingUtil.setContentView(this, resLayoutId)
 //        presenter?.createView(this as VIEW)
 //        initializedView(savedInstanceState)
@@ -24,7 +28,7 @@ private val resLayoutId: Int
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter?.destroyView()
+        presenter.destroyView()
     }
 
     abstract val presenter:PRESENTER

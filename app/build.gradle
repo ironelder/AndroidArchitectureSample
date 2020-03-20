@@ -17,6 +17,10 @@ android {
         versionName '1.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -30,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation project(":testdata")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -41,9 +46,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.paging:paging-runtime:2.1.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.15'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

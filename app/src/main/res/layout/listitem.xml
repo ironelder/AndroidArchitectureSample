@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="androidx.core.text.HtmlCompat" />
         <variable
             name="item"
             type="com.ironelder.androidarchitecture.data.model.ListItem" />
@@ -25,6 +26,7 @@
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:text="@{HtmlCompat.fromHtml(item.title, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
             app:layout_constraintRight_toRightOf="parent" />
