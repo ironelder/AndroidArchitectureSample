@@ -17,13 +17,25 @@ class NetworkUseCase {
     ): Single<DataModel> {
         return RemoteRepositoryImpl.searchForKakao(category, query).map { it ->
             when (category) {
-                WEB_TAB -> DataModel(mappingBlogDataModel(it), it.meta.is_end)
+                WEB_TAB -> DataModel(mappingWebDataModel(it), it.meta.is_end)
                 IMAGE_TAB -> DataModel(mappingImageDataModel(it), it.meta.is_end)
                 BLOG_TAB -> DataModel(mappingBlogDataModel(it), it.meta.is_end)
-                CAFE_TAB -> DataModel(mappingBlogDataModel(it), it.meta.is_end)
+                CAFE_TAB -> DataModel(mappingCafeDataModel(it), it.meta.is_end)
                 else -> DataModel(mappingBlogDataModel(it), it.meta.is_end)
             }
         }
+    }
+
+    private fun mappingWebDataModel(data: Contents) = data.documents.map {
+        ListItem(
+            contents = it.contents ?: "",
+            datetime = it.datetime ?: "",
+            title = it.title ?: "",
+            thumbnail = "",
+            url = it.url ?: "",
+            play_time = 0,
+            author = ""
+        )
     }
 
     private fun mappingBlogDataModel(data: Contents) = data.documents.map {
@@ -35,6 +47,18 @@ class NetworkUseCase {
             url = it.url ?: "",
             play_time = it.play_time ?: 0,
             author = it.author ?: ""
+        )
+    }
+
+    private fun mappingCafeDataModel(data: Contents) = data.documents.map {
+        ListItem(
+            contents = it.contents ?: "",
+            datetime = it.datetime ?: "",
+            title = it.title ?: "",
+            thumbnail = it.thumbnail ?: "",
+            url = it.url ?: "",
+            play_time = it.play_time ?: 0,
+            author = ""
         )
     }
 

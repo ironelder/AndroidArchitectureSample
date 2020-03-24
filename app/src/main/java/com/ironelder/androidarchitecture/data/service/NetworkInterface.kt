@@ -13,6 +13,6 @@ interface NetworkInterface {
 
     @Headers("Authorization: KakaoAK $REST_API_KEY")
     @GET("v2/search/{category}")
-    fun search(@Path("category") category: String, @Query("query") query: String): Single<Contents>
+    fun search(@Path("category") category: String, @Query("query") query: String, @Query("size") size:Int? = 50): Single<Contents>
 
 }
