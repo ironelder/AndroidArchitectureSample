@@ -1,25 +1,42 @@
 package com.ironelder.androidarchitecture.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-
+import android.widget.Toast
 import com.ironelder.androidarchitecture.R
+import com.ironelder.androidarchitecture.common.IMAGE_TAB
+import com.ironelder.androidarchitecture.common.showToastMessage
+import com.ironelder.androidarchitecture.component.SearchListAdapter
+import com.ironelder.androidarchitecture.data.model.ListItem
+import com.ironelder.androidarchitecture.databinding.FragmentImageBinding
+import com.ironelder.androidarchitecture.domain.NetworkUseCase
+import com.ironelder.androidarchitecture.view.base.BaseFragment
 
-class ImageFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class ImageFragment :
+    BaseFragment<ImageContract.View, ImageContract.Presenter, FragmentImageBinding>(R.layout.fragment_image),
+    ImageContract.View {
+    override fun onDataChanged(result: List<ListItem>?) {
+        binding.items = result
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_image, container, false)
+    override fun showErrorMessage(message: String) {
+        activity?.showToastMessage(message, Toast.LENGTH_SHORT)
+    }
+
+    override fun showLoading() {
+        binding.isLoading = true
+    }
+
+    override fun hideLoading() {
+        binding.isLoading = false
+    }
+
+    override val presenter = ImagePresenter(NetworkUseCase())
+
+    override fun initializedView(savedInstanceState: Bundle?) {
+        with(binding.rvSearchList) {
+            adapter = SearchListAdapter()
+        }
+        presenter.searchData(IMAGE_TAB, "설현")
     }
 
 }
