@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/webFragment"
-        android:name="com.ironelder.androidarchitecture.view.WebFragment"
+        android:name="com.ironelder.androidarchitecture.view.web.WebFragment"
         android:label="fragment_web"
         tools:layout="@layout/fragment_web" />
     <fragment
@@ -23,17 +23,17 @@
     </fragment>
     <fragment
         android:id="@+id/imageFragment"
-        android:name="com.ironelder.androidarchitecture.view.ImageFragment"
+        android:name="com.ironelder.androidarchitecture.view.image.ImageFragment"
         android:label="fragment_image"
         tools:layout="@layout/fragment_image" />
     <fragment
         android:id="@+id/blogFragment"
-        android:name="com.ironelder.androidarchitecture.view.BlogFragment"
+        android:name="com.ironelder.androidarchitecture.view.blog.BlogFragment"
         android:label="fragment_blog"
         tools:layout="@layout/fragment_blog" />
     <fragment
         android:id="@+id/cafeFragment"
-        android:name="com.ironelder.androidarchitecture.view.CafeFragment"
+        android:name="com.ironelder.androidarchitecture.view.cafe.CafeFragment"
         android:label="fragment_cafe"
         tools:layout="@layout/fragment_cafe" />
 </navigation>

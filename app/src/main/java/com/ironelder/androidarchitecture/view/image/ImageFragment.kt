@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture.view
+package com.ironelder.androidarchitecture.view.image
 
 import android.os.Bundle
 import android.widget.Toast
@@ -30,7 +30,10 @@ class ImageFragment :
         binding.isLoading = false
     }
 
-    override val presenter = ImagePresenter(NetworkUseCase())
+    override val presenter =
+        ImagePresenter(
+            NetworkUseCase()
+        )
 
     override fun initializedView(savedInstanceState: Bundle?) {
         with(binding.rvSearchList) {

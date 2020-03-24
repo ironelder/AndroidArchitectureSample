@@ -1,4 +1,4 @@
-package com.ironelder.androidarchitecture.view
+package com.ironelder.androidarchitecture.view.web
 
 import com.ironelder.androidarchitecture.domain.NetworkUseCase
 import com.ironelder.androidarchitecture.view.base.BasePresenter

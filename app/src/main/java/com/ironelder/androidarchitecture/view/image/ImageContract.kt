@@ -1,9 +1,9 @@
-package com.ironelder.androidarchitecture.view
+package com.ironelder.androidarchitecture.view.image
 
 import com.ironelder.androidarchitecture.data.model.ListItem
 import com.ironelder.androidarchitecture.view.base.BaseContract
 
-interface WebContract {
+interface ImageContract {
     interface View : BaseContract.View {
         fun onDataChanged(result: List<ListItem>?)
         fun showErrorMessage(message: String)

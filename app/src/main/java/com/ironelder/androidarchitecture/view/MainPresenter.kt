@@ -3,6 +3,7 @@ package com.ironelder.androidarchitecture.view
 import com.ironelder.androidarchitecture.data.model.DataModel
 import com.ironelder.androidarchitecture.domain.NetworkUseCase
 import com.ironelder.androidarchitecture.view.base.BasePresenter
+import com.ironelder.androidarchitecture.view.web.WebContract
 
 class MainPresenter(private val networkUseCase: NetworkUseCase) : BasePresenter<WebContract.View>(), WebContract.Presenter {
     override fun searchData(category: String, query: String) {

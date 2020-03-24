@@ -1,9 +1,9 @@
-package com.ironelder.androidarchitecture.view
+package com.ironelder.androidarchitecture.view.web
 
 import android.os.Bundle
 import android.widget.Toast
 import com.ironelder.androidarchitecture.R
-import com.ironelder.androidarchitecture.common.BLOG_TAB
+import com.ironelder.androidarchitecture.common.WEB_TAB
 import com.ironelder.androidarchitecture.common.showToastMessage
 import com.ironelder.androidarchitecture.component.SearchListAdapter
 import com.ironelder.androidarchitecture.data.model.ListItem
@@ -30,12 +30,13 @@ class WebFragment :
         binding.isLoading = false
     }
 
-    override val presenter = WebPresenter(NetworkUseCase())
+    override val presenter =
+        WebPresenter(NetworkUseCase())
 
     override fun initializedView(savedInstanceState: Bundle?) {
         with(binding.rvSearchList) {
             adapter = SearchListAdapter()
         }
-        presenter.searchData(BLOG_TAB, "test")
+        presenter.searchData(WEB_TAB, "test")
     }
 }
