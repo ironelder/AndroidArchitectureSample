@@ -10,7 +10,7 @@ import com.min.listApp.presentation.constract.MainConstract
 import com.min.listApp.presentation.presenter.MainPresenter
 
 
-class MainActivity : BaseActivity<MainConstract.View, MainConstract.Presenter, ActivityMainBinding>(R.layout.activity_main), MainConstract.View {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), MainConstract.View {
 
     override var presenter: MainConstract.Presenter = MainPresenter(this)
 
@@ -18,10 +18,10 @@ class MainActivity : BaseActivity<MainConstract.View, MainConstract.Presenter, A
         binding.searchInput.setOnEditorActionListener { textView, actionId, _ ->
 
             when (actionId) {
-                EditorInfo.IME_ACTION_SEARCH -> {
-                    (supportFragmentManager.findFragmentByTag("MainList") as? ListFragment)?.searchKakao(keyword = textView.text.toString())
-                }
+            EditorInfo.IME_ACTION_SEARCH -> {
+                (supportFragmentManager.findFragmentByTag("MainList") as? ListFragment)?.searchKakao(keyword = textView.text.toString())
             }
+        }
 
             return@setOnEditorActionListener true
         }

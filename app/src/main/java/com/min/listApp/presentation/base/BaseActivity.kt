@@ -4,29 +4,22 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.min.listApp.presentation.component.Disposable
+import com.min.listApp.presentation.component.MyDisposeable
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseActivity<V : BaseConstract.View, P : BaseConstract.Presenter<V>, B: ViewDataBinding>(val resId: Int) :
-    AppCompatActivity(), Disposable {
-    abstract val presenter: P
+abstract class BaseActivity<B: ViewDataBinding>(val resId: Int) :
+    AppCompatActivity(),  BaseConstract.View {
+
     protected lateinit var binding: B
-
-    override val compositeDisposable = CompositeDisposable()
-
-    override fun addDisposable(disposable: io.reactivex.disposables.Disposable) {
-        compositeDisposable.add(disposable)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, resId)
-        presenter.start()
+        presenter.didViewCreate()
     }
 
     override fun onDestroy() {
-        presenter.end()
-        compositeDisposable.dispose()
+        presenter.willViewDestory()
         super.onDestroy()
     }
 }

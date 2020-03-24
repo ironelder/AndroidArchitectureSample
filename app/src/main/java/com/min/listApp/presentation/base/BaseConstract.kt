@@ -1,18 +1,14 @@
 package com.min.listApp.presentation.base
 
-import com.min.listApp.presentation.component.Disposable
-
 interface BaseConstract {
 
-    interface Presenter<V : View> {
-        var view: V
-        fun start()
-        fun end()
+    interface Presenter {
+        fun didViewCreate()
+        fun willViewDestory()
     }
 
-    interface View: Disposable {
+    interface View {
+        val presenter: Presenter
         fun initLayout()
     }
-
-
 }

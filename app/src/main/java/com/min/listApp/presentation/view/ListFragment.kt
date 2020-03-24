@@ -13,7 +13,7 @@ import com.min.listApp.presentation.presenter.ListFragmentPresenter
 
 private const val ARG_PARAM_CATEGORY = "KAKAO_CATEGORY"
 
-class ListFragment(resId: Int) : BaseFragment<ListFragmentConstract.View, ListFragmentConstract.Presenter, FragmentMainBinding>(resId), ListFragmentConstract.View {
+class ListFragment(resId: Int) : BaseFragment<FragmentMainBinding>(resId), ListFragmentConstract.View {
 
     private var argParamCategory: KakaoCategory? = null
     override val presenter: ListFragmentConstract.Presenter = ListFragmentPresenter(this)

@@ -8,7 +8,7 @@ import com.min.listApp.presentation.constract.ListFragmentConstract
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class ListFragmentPresenter(override var view: ListFragmentConstract.View) : ListFragmentConstract.Presenter {
+class ListFragmentPresenter(view: ListFragmentConstract.View) : ListFragmentConstract.Presenter(view) {
 
     private var mCategory = KakaoCategory.WEB
 
@@ -28,17 +28,12 @@ class ListFragmentPresenter(override var view: ListFragmentConstract.View) : Lis
                 view.updateList(category = mCategory, listItemModels = it.listItemModels)
             }, {
                 Log.e("MIN", "KakaoSearch Error => ${it.message}")
-            }).let { view.addDisposable(disposable = it) }
+            }).let { addDisposable(disposable = it) }
     }
 
     override fun setCategory(category: String) {
         mCategory = KakaoCategory.fromString(category)
     }
 
-    override fun start() {
-        view.initLayout()
-    }
 
-    override fun end() {
-    }
 }
