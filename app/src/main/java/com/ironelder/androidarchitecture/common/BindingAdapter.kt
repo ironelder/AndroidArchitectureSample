@@ -1,6 +1,6 @@
 package com.ironelder.androidarchitecture.common
 
-import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +17,12 @@ fun setListItems(view: RecyclerView, items: List<ListItem>?) {
 
 @BindingAdapter("loadImageUrl")
 fun loadImageUrl(view: ImageView, url: String?) {
-    Glide.with(view.context).load(url).centerCrop()
-        .placeholder(R.drawable.ic_launcher_background)
-        .error(R.drawable.ic_launcher_background).into(view)
+    if (url.isNullOrEmpty()) {
+        view.visibility = View.GONE
+    } else {
+        view.visibility = View.VISIBLE
+        Glide.with(view.context).load(url).centerCrop()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background).into(view)
+    }
 }
