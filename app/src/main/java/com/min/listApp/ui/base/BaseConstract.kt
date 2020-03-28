@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.base
+package com.min.listApp.ui.base
 
 interface BaseConstract {
 
@@ -9,6 +9,5 @@ interface BaseConstract {
 
     interface View {
         val presenter: Presenter
-        fun initLayout()
     }
 }

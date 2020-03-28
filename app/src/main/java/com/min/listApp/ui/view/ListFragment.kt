@@ -1,19 +1,19 @@
-package com.min.listApp.presentation.view
+package com.min.listApp.ui.view
 
 import android.os.Bundle
 import com.min.listApp.R
 import com.min.listApp.data.common.KakaoCategory
 import com.min.listApp.data.model.KakaoImageListItemModel
 import com.min.listApp.data.model.KakaoListItemModel
-import com.min.listApp.databinding.FragmentMainBinding
-import com.min.listApp.presentation.base.BaseFragment
-import com.min.listApp.presentation.component.KakaoSearchListAdapter
-import com.min.listApp.presentation.constract.ListFragmentConstract
-import com.min.listApp.presentation.presenter.ListFragmentPresenter
+import com.min.listApp.databinding.FragmentListImageBinding
+import com.min.listApp.ui.base.BaseFragment
+import com.min.listApp.ui.component.KakaoSearchListAdapter
+import com.min.listApp.ui.constract.ListFragmentConstract
+import com.min.listApp.ui.presenter.ListFragmentPresenter
 
 private const val ARG_PARAM_CATEGORY = "KAKAO_CATEGORY"
 
-class ListFragment(resId: Int) : BaseFragment<FragmentMainBinding>(resId), ListFragmentConstract.View {
+class ListFragment(resId: Int) : BaseFragment<FragmentListImageBinding>(resId), ListFragmentConstract.View {
 
     private var argParamCategory: KakaoCategory? = null
     override val presenter: ListFragmentConstract.Presenter = ListFragmentPresenter(this)
@@ -21,7 +21,7 @@ class ListFragment(resId: Int) : BaseFragment<FragmentMainBinding>(resId), ListF
     companion object {
         @JvmStatic
         fun newInstance(category: KakaoCategory) =
-            ListFragment(resId = R.layout.fragment_main).apply {
+            ListFragment(resId = R.layout.fragment_list_image).apply {
                 arguments = Bundle().apply {
                      putString(ARG_PARAM_CATEGORY, category.categoryString)
                 }
@@ -30,7 +30,7 @@ class ListFragment(resId: Int) : BaseFragment<FragmentMainBinding>(resId), ListF
 
     override fun updateList(category: KakaoCategory, listItemModels: List<KakaoListItemModel>) {
         @Suppress("UNCHECKED_CAST")
-        (binding.listMain.adapter as? KakaoSearchListAdapter)?.let {
+        (binding.list.adapter as? KakaoSearchListAdapter)?.let {
             when(argParamCategory){
                 KakaoCategory.IMAGE -> it.setData(listItemModels.filterIsInstance<KakaoImageListItemModel>())
                 else -> {}
@@ -41,7 +41,7 @@ class ListFragment(resId: Int) : BaseFragment<FragmentMainBinding>(resId), ListF
 
     override fun initLayout() {
         when(argParamCategory) {
-            KakaoCategory.IMAGE -> binding.listMain.adapter = KakaoSearchListAdapter()
+            KakaoCategory.IMAGE -> binding.list.adapter = KakaoSearchListAdapter()
             else -> {}
         }
     }

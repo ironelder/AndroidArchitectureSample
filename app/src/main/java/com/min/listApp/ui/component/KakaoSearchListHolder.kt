@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.component
+package com.min.listApp.ui.component
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.min.listApp.R
 import com.min.listApp.data.model.KakaoImageListItemModel
 import com.min.listApp.databinding.ItemListMainBinding
-import com.min.listApp.presentation.base.BaseViewHolder
+import com.min.listApp.ui.base.BaseViewHolder
 import com.min.listApp.util.ColorUtil
 import com.squareup.picasso.Picasso
 

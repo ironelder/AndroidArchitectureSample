@@ -1,10 +1,10 @@
-package com.min.listApp.presentation.base
+package com.min.listApp.ui.base
 
-import com.min.listApp.presentation.component.MyDisposeable
+import com.min.listApp.ui.component.MyDisposeable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BasePresenter<V: BaseConstract.View>(val view: V): BaseConstract.Presenter, MyDisposeable {
+abstract class BasePresenter<V: BaseConstract.View>(var view: V?): BaseConstract.Presenter, MyDisposeable {
 
     override val disposeBag by lazy {
         return@lazy CompositeDisposable()
@@ -16,9 +16,9 @@ abstract class BasePresenter<V: BaseConstract.View>(val view: V): BaseConstract.
 
     override fun willViewDestory() {
         disposeBag.dispose()
+        view = null
     }
 
     override fun didViewCreate() {
-        view.initLayout()
     }
 }

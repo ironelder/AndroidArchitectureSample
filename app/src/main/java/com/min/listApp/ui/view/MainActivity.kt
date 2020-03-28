@@ -1,13 +1,13 @@
-package com.min.listApp.presentation.view
+package com.min.listApp.ui.view
 
 import android.view.inputmethod.EditorInfo
 import android.widget.RadioButton
 import com.min.listApp.R
 import com.min.listApp.data.common.KakaoCategory
 import com.min.listApp.databinding.ActivityMainBinding
-import com.min.listApp.presentation.base.BaseActivity
-import com.min.listApp.presentation.constract.MainConstract
-import com.min.listApp.presentation.presenter.MainPresenter
+import com.min.listApp.ui.base.BaseActivity
+import com.min.listApp.ui.constract.MainConstract
+import com.min.listApp.ui.presenter.MainPresenter
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), MainConstract.View {

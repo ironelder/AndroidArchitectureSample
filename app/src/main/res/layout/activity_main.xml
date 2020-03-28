@@ -9,7 +9,7 @@
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.view.MainActivity">
+        tools:context=".ui.view.MainActivity">
 
         <EditText
             android:id="@+id/search_input"

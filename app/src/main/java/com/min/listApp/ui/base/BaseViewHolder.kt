@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.base
+package com.min.listApp.ui.base
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView

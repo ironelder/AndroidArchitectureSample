@@ -1,4 +1,4 @@
-package com.min.listApp.presentation.base
+package com.min.listApp.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,12 +14,13 @@ abstract class BaseFragment<B: ViewDataBinding>(val resId: Int) : Fragment(), Ba
 
      override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
          binding = DataBindingUtil.inflate(inflater, resId, container, false)
-         binding.lifecycleOwner = this
+         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initLayout()
         presenter.didViewCreate()
     }
 
@@ -27,4 +28,6 @@ abstract class BaseFragment<B: ViewDataBinding>(val resId: Int) : Fragment(), Ba
         presenter.willViewDestory()
         super.onDestroyView()
     }
+
+    abstract fun initLayout()
 }
