@@ -1,44 +1,57 @@
 package com.ironelder.androidarchitecture.view
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ironelder.androidarchitecture.R
-import com.ironelder.androidarchitecture.component.SearchListAdapter
-import com.ironelder.androidarchitecture.data.model.Document
-import com.ironelder.androidarchitecture.view.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity :
-    BaseActivity<MainContract.View, MainContract.Presenter>(R.layout.activity_main),
-    MainContract.View {
-    override val presenter = MainPresenter()
-
-    override fun onDataChanged(result: List<Document>?) {
-        (rv_searchList.adapter as? SearchListAdapter)?.setDocumentData(result)
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
+    private val navController: NavController by lazy {
+        findNavController(R.id.nav_host_fragment)
     }
 
-    override fun showErrorMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun onSupportNavigateUp() = navController.navigateUp()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setSupportActionBar(findViewById(R.id.toolbar_home))
+        setupNav()
     }
 
-    override fun showLoading() {
-        pb_loading.visibility = View.VISIBLE
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+        val searchItem: MenuItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+        return super.onCreateOptionsMenu(menu)
     }
 
-    override fun hideLoading() {
-        pb_loading.visibility = View.GONE
-    }
+    private fun setupNav() {
+        findViewById<BottomNavigationView>(R.id.nav_bottom_view)
+            .setupWithNavController(navController)
 
-    override fun initializedView(savedInstanceState: Bundle?) {
-        rv_searchList.apply {
-            adapter =
-                SearchListAdapter()
-            val linearLayoutManager = LinearLayoutManager(this@MainActivity)
-            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-            layoutManager = linearLayoutManager
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.splashFragment -> hideBottomNav()
+                else -> showBottomNav()
+            }
         }
-        presenter.searchData("blog", "test")
+    }
+
+    private fun showBottomNav() {
+        findViewById<Toolbar>(R.id.toolbar_home).visibility = View.VISIBLE
+        findViewById<BottomNavigationView>(R.id.nav_bottom_view).visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNav() {
+        findViewById<Toolbar>(R.id.toolbar_home).visibility = View.GONE
+        findViewById<BottomNavigationView>(R.id.nav_bottom_view).visibility = View.GONE
     }
 }
