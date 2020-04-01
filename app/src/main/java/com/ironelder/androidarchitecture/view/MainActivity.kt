@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(findViewById(R.id.toolbar_home))
         setupNav()
     }
 
@@ -44,10 +46,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun showBottomNav() {
+        findViewById<Toolbar>(R.id.toolbar_home).visibility = View.VISIBLE
         findViewById<BottomNavigationView>(R.id.nav_bottom_view).visibility = View.VISIBLE
     }
 
     private fun hideBottomNav() {
+        findViewById<Toolbar>(R.id.toolbar_home).visibility = View.GONE
         findViewById<BottomNavigationView>(R.id.nav_bottom_view).visibility = View.GONE
     }
 }
