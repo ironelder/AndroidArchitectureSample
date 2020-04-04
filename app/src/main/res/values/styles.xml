@@ -6,7 +6,7 @@
         <item name="android:statusBarColor">@color/colorApplicationDefaultBackground</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:background">@color/colorApplicationDefaultBackground</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorApplicationDefaultBackground</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -20,4 +20,18 @@
         <item name="colorPrimary">#000000</item>
         <item name="android:textColorSecondary">@color/colorPrimary</item>
     </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/colorKakao</item>
+        <item name="android:textColorSecondary">@color/colorKakao</item>
+        <item name="android:background">@color/colorApplicationDefaultBackground</item>
+        <item name="titleTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Title</item>
+        <item name="searchIcon">@null</item>
+        <item name="queryBackground">@color/colorWhite</item>
+        <item name="searchHintIcon">@null</item>
+        <item name="android:textColorHint">@color/colorKakao</item>
+        <item name="queryHint">@string/search_hint</item>
+    </style>
+
+    <string name="search_hint">InputSearchWord</string>
 </resources>

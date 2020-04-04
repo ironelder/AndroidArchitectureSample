@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         menuInflater.inflate(R.menu.search_menu, menu)
         val searchItem: MenuItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
+        supportActionBar?.title = null
+
         return super.onCreateOptionsMenu(menu)
     }
 
