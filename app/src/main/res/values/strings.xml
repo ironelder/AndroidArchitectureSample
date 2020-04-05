@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_nav_title_web">Web</string>
+    <string name="bottom_nav_title_image">Image</string>
+    <string name="bottom_nav_title_blog">Blog</string>
+    <string name="bottom_nav_title_cafe">Cafe</string>
+
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
 </resources>

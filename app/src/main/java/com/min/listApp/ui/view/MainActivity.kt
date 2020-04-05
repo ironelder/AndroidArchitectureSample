@@ -1,37 +1,87 @@
 package com.min.listApp.ui.view
 
+import android.content.Context
+import android.os.Bundle
+import android.util.AttributeSet
+import android.view.Menu
 import android.view.inputmethod.EditorInfo
-import android.widget.RadioButton
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.*
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.min.listApp.R
-import com.min.listApp.data.common.KakaoCategory
 import com.min.listApp.databinding.ActivityMainBinding
 import com.min.listApp.ui.base.BaseActivity
+import com.min.listApp.ui.constract.ListFragmentConstract
 import com.min.listApp.ui.constract.MainConstract
+import com.min.listApp.ui.presenter.ListFragmentPresenter
 import com.min.listApp.ui.presenter.MainPresenter
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), MainConstract.View {
+    private val navController: NavController by lazy {
+        findNavController(R.id.nav_host_fragment)
+    }
+
+    override fun onSupportNavigateUp() = navController.navigateUp()
 
     override var presenter: MainConstract.Presenter = MainPresenter(this)
 
     override fun initLayout() {
+        setupNav()
+
         binding.searchInput.setOnEditorActionListener { textView, actionId, _ ->
 
             when (actionId) {
             EditorInfo.IME_ACTION_SEARCH -> {
-                (supportFragmentManager.findFragmentByTag("MainList") as? ListFragment)?.searchKakao(keyword = textView.text.toString())
+                //임시로 연결해 놓는다.
+                (foregroundFragment?.presenter as? ListFragmentPresenter)?.let{
+                    it.setCategory("image")
+                    it.searchKakao(keyword = textView.text.toString())
+                }
             }
         }
 
             return@setOnEditorActionListener true
         }
-
-        binding.categoryListGroup.setOnCheckedChangeListener { group, id ->
-            var categoryString = group.findViewById<RadioButton>(id).getTag() as? String ?: "image"
-            (supportFragmentManager.findFragmentByTag("MainList") as? ListFragment)?.setCategory(category = categoryString)
-        }
-
-        supportFragmentManager.beginTransaction().replace(R.id.frame_main, ListFragment.newInstance(KakaoCategory.IMAGE), "MainList").commit()
    }
+
+    //임시로 현재 Fragment를 가져온다.
+    val foregroundFragment: ListFragmentConstract.View? by lazy {
+        return@lazy supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as? ListFragmentConstract.View
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.search_menu, menu)
+//        val searchItem: MenuItem = menu.findItem(R.id.action_search)
+//        val searchView = searchItem.actionView as SearchView
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setupNav() {
+        binding.navBottomView.setupWithNavController(navController)
+    }
 }
 
+class MyNavHostFragment : NavHostFragment() {
+    override fun createFragmentNavigator() =
+        MyFragmentNavigator(requireContext(), childFragmentManager, id)
+}
+
+@Navigator.Name("fragment")
+class MyFragmentNavigator(
+    context: Context,
+    fm: FragmentManager,
+    containerId: Int
+) : FragmentNavigator(context, fm, containerId) {
+
+    override fun navigate(destination: Destination, args: Bundle?, navOptions: NavOptions?, navigatorExtras: Navigator.Extras?): NavDestination? {
+        val shouldSkip = navOptions?.run {
+            popUpTo == destination.id && !isPopUpToInclusive
+        } ?: false
+
+        return if (shouldSkip) null else super.navigate(destination, args, navOptions, navigatorExtras)
+    }
+}

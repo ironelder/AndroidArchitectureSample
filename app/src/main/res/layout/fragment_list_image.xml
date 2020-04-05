@@ -6,7 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.ListFragment">
+        android:background="#77ff00"
+        tools:context=".ui.view.KakaoWebSearchListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
