@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment<in VIEW : BaseContract.View, PRESENTER : BaseContract.Presenter<VIEW>, BINDING : ViewDataBinding>(
+abstract class BaseFragment<VM:BaseViewModel, BINDING : ViewDataBinding>(
     private val resId: Int
-) : Fragment(resId), BaseContract.View {
+) : Fragment(resId){
     protected lateinit var binding: BINDING
 
     override fun onCreateView(
@@ -26,16 +26,13 @@ abstract class BaseFragment<in VIEW : BaseContract.View, PRESENTER : BaseContrac
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.createView(this as VIEW)
         initializedView(savedInstanceState)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        presenter.destroyView()
     }
 
-    abstract val presenter:PRESENTER
     abstract fun initializedView(savedInstanceState: Bundle?)
 
 }
