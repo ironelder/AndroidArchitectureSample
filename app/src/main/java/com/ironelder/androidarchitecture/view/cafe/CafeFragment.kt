@@ -8,7 +8,7 @@ import com.ironelder.androidarchitecture.databinding.FragmentCafeBinding
 import com.ironelder.androidarchitecture.view.base.BaseFragment
 
 class CafeFragment :
-    BaseFragment<CafeViewModel, FragmentCafeBinding>(R.layout.fragment_cafe){
+    BaseFragment<FragmentCafeBinding>(R.layout.fragment_cafe){
     override fun initializedView(savedInstanceState: Bundle?) {
         with(binding.rvSearchList) {
             adapter = SearchListAdapter()

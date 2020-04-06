@@ -8,7 +8,7 @@ import com.ironelder.androidarchitecture.databinding.FragmentBlogBinding
 import com.ironelder.androidarchitecture.view.base.BaseFragment
 
 class BlogFragment :
-    BaseFragment<BlogViewModel, FragmentBlogBinding>(R.layout.fragment_blog) {
+    BaseFragment<FragmentBlogBinding>(R.layout.fragment_blog) {
     override fun initializedView(savedInstanceState: Bundle?) {
         with(binding.rvSearchList) {
             adapter = SearchListAdapter()

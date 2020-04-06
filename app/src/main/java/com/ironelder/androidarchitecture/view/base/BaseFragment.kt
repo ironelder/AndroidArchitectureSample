@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment<VM:BaseViewModel, BINDING : ViewDataBinding>(
+abstract class BaseFragment<BINDING : ViewDataBinding>(
     private val resId: Int
 ) : Fragment(resId){
     protected lateinit var binding: BINDING
@@ -29,9 +29,6 @@ abstract class BaseFragment<VM:BaseViewModel, BINDING : ViewDataBinding>(
         initializedView(savedInstanceState)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
 
     abstract fun initializedView(savedInstanceState: Bundle?)
 
