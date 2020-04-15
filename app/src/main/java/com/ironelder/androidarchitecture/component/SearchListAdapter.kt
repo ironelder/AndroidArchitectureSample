@@ -28,6 +28,13 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.SearchListItemV
         notifyDataSetChanged()
     }
 
+    fun addDocumentData(itemList: List<ListItem>?) {
+        if (itemList != null) {
+            mItemList.addAll(itemList)
+            notifyItemRangeChanged(mItemList.size, itemList.size-1)
+        }
+    }
+
     override fun getItemCount(): Int {
         return mItemList.size
     }

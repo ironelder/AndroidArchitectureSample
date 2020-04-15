@@ -10,4 +10,5 @@
 
     <string name="search">Search</string>
     <string name="filter">Filter</string>
+    <string name="toolbar_title">Kakao Developers</string>
 </resources>

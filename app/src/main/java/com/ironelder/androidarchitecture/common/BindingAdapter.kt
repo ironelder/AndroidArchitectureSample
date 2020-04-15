@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ironelder.androidarchitecture.R
 import com.ironelder.androidarchitecture.component.SearchListAdapter
 import com.ironelder.androidarchitecture.data.model.ListItem
@@ -25,4 +26,9 @@ fun loadImageUrl(view: ImageView, url: String?) {
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background).into(view)
     }
+}
+
+@BindingAdapter("enableTint")
+fun enableTint(view:BottomNavigationView, enabled:Boolean) {
+    view.itemIconTintList = if(enabled) view.itemIconTintList else null
 }

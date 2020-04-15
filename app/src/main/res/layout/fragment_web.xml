@@ -11,6 +11,10 @@
         <import type="com.ironelder.androidarchitecture.data.model.ListItem" />
 
         <variable
+            name="webViewModel"
+            type="com.ironelder.androidarchitecture.view.web.WebViewModel" />
+
+        <variable
             name="items"
             type="List&lt;ListItem&gt;" />
 
@@ -34,13 +38,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setListItems="@{items}" />
+            app:setListItems="@{webViewModel.items}" />
 
         <ProgressBar
             android:id="@+id/pb_loading"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:visibility="@{isLoading? View.VISIBLE : View.GONE}"
+            android:visibility="@{webViewModel.loading? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
