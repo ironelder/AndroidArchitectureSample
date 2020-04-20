@@ -2,7 +2,6 @@ package com.min.listApp.ui.view
 
 import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.Menu
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.FragmentManager
@@ -10,24 +9,19 @@ import androidx.navigation.*
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.min.listApp.R
 import com.min.listApp.databinding.ActivityMainBinding
 import com.min.listApp.ui.base.BaseActivity
-import com.min.listApp.ui.constract.ListFragmentConstract
-import com.min.listApp.ui.constract.MainConstract
-import com.min.listApp.ui.presenter.ListFragmentPresenter
-import com.min.listApp.ui.presenter.MainPresenter
 
 
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), MainConstract.View {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val navController: NavController by lazy {
         findNavController(R.id.nav_host_fragment)
     }
 
     override fun onSupportNavigateUp() = navController.navigateUp()
 
-    override var presenter: MainConstract.Presenter = MainPresenter(this)
+    //override var presenter: MainConstract.Presenter = MainPresenter(this)
 
     override fun initLayout() {
         setupNav()
@@ -37,10 +31,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), 
             when (actionId) {
             EditorInfo.IME_ACTION_SEARCH -> {
                 //임시로 연결해 놓는다.
-                (foregroundFragment?.presenter as? ListFragmentPresenter)?.let{
-                    it.setCategory("image")
-                    it.searchKakao(keyword = textView.text.toString())
-                }
+//                (foregroundFragment?.presenter as? ListFragmentPresenter)?.let{
+//                    it.setCategory("image")
+//                    it.searchKakao(keyword = textView.text.toString())
+//                }
             }
         }
 
@@ -49,9 +43,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), 
    }
 
     //임시로 현재 Fragment를 가져온다.
-    val foregroundFragment: ListFragmentConstract.View? by lazy {
-        return@lazy supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as? ListFragmentConstract.View
-    }
+//    val foregroundFragment: ListFragmentConstract.View? by lazy {
+//        return@lazy supportFragmentManager.fragments.get(0).childFragmentManager.fragments.get(0) as? ListFragmentConstract.View
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        menuInflater.inflate(R.menu.search_menu, menu)

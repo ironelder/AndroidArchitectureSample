@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment<B: ViewDataBinding>(val resId: Int) : Fragment(), BaseConstract.View {
+abstract class BaseFragment<B: ViewDataBinding>(val resId: Int) : Fragment() {
 
     protected lateinit var binding: B
 
@@ -21,11 +21,9 @@ abstract class BaseFragment<B: ViewDataBinding>(val resId: Int) : Fragment(), Ba
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLayout()
-        presenter.didViewCreate()
     }
 
     override fun onDestroyView() {
-        presenter.willViewDestory()
         super.onDestroyView()
     }
 

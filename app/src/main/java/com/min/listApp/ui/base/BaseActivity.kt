@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<B: ViewDataBinding>(val resId: Int) :
-    AppCompatActivity(),  BaseConstract.View {
+    AppCompatActivity() {
 
     protected lateinit var binding: B
 
@@ -14,12 +14,6 @@ abstract class BaseActivity<B: ViewDataBinding>(val resId: Int) :
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, resId)
         initLayout()
-        presenter.didViewCreate()
-    }
-
-    override fun onDestroy() {
-        presenter.willViewDestory()
-        super.onDestroy()
     }
 
     abstract fun initLayout()

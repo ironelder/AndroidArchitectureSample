@@ -7,14 +7,15 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.min.listApp.R
 import com.min.listApp.data.model.KakaoImageListItemModel
-import com.min.listApp.databinding.ItemListMainBinding
+import com.min.listApp.databinding.ItemListImageBinding
 import com.min.listApp.ui.base.BaseViewHolder
 import com.min.listApp.util.ColorUtil
 import com.squareup.picasso.Picasso
 
-class KakaoSearchListHolder(parent: ViewGroup) : BaseViewHolder<ItemListMainBinding, KakaoImageListItemModel>(
-    DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_list_main, parent, false)
+class KakaoSearchListImageHolder(parent: ViewGroup) : BaseViewHolder<ItemListImageBinding, KakaoImageListItemModel>(
+    DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_list_image, parent, false)
 ) {
+
     override fun bind(data: KakaoImageListItemModel) {
         binding.apply {
             item = data
@@ -22,7 +23,6 @@ class KakaoSearchListHolder(parent: ViewGroup) : BaseViewHolder<ItemListMainBind
             binding.executePendingBindings()
         }
     }
-
 }
 
 @BindingAdapter(value = ["imageUrl"], requireAll = true)

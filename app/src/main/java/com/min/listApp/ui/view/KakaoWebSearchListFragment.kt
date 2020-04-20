@@ -7,14 +7,12 @@ import com.min.listApp.data.model.KakaoListItemModel
 import com.min.listApp.databinding.FragmentListWebBinding
 import com.min.listApp.ui.base.BaseFragment
 import com.min.listApp.ui.component.KakaoSearchListAdapter
-import com.min.listApp.ui.constract.ListFragmentConstract
-import com.min.listApp.ui.presenter.ListFragmentPresenter
 
-class KakaoWebSearchListFragment : BaseFragment<FragmentListWebBinding>(R.layout.fragment_list_web), ListFragmentConstract.View {
+class KakaoWebSearchListFragment : BaseFragment<FragmentListWebBinding>(R.layout.fragment_list_web) {
 
-    override val presenter: ListFragmentConstract.Presenter = ListFragmentPresenter(this)
+//    override val presenter: ListFragmentConstract.Presenter = ListFragmentPresenter(this)
 
-    override fun updateList(category: KakaoCategory, listItemModels: List<KakaoListItemModel>) {
+     fun updateList(category: KakaoCategory, listItemModels: List<KakaoListItemModel>) {
         @Suppress("UNCHECKED_CAST")
         (binding.list.adapter as? KakaoSearchListAdapter)?.let {
             it.setData(listItemModels.filterIsInstance<KakaoImageListItemModel>())
@@ -26,6 +24,6 @@ class KakaoWebSearchListFragment : BaseFragment<FragmentListWebBinding>(R.layout
     }
 
     fun searchKakao(keyword: String){
-        presenter.searchKakao(keyword = keyword)
+//        presenter.searchKakao(keyword = keyword)
     }
 }
