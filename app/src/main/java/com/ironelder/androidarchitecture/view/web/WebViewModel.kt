@@ -1,7 +1,10 @@
 package com.ironelder.androidarchitecture.view.web
 
+import android.util.Log
+import android.view.View
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
+import com.ironelder.androidarchitecture.R
 import com.ironelder.androidarchitecture.data.model.ListItem
 import com.ironelder.androidarchitecture.domain.NetworkUseCase
 import com.ironelder.androidarchitecture.view.base.BaseViewModel
@@ -11,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 class WebViewModel(private val useCase: NetworkUseCase) : BaseViewModel() {
     val items: ObservableArrayList<ListItem> = ObservableArrayList()
     val errorMessage: ObservableField<String> = ObservableField()
-    val loading:ObservableField<Boolean> = ObservableField()
+    val loading: ObservableField<Boolean> = ObservableField()
     fun searchData(category: String, query: String) {
         loading.set(true)
         disposeBag.add(useCase.getSearchDataUseCase(category, query)
@@ -28,4 +31,8 @@ class WebViewModel(private val useCase: NetworkUseCase) : BaseViewModel() {
             ))
     }
 
+    fun testClick(v: View) {
+        Log.d("ironelderLog", "btn id = ${R.id.test_btn}")
+        Log.d("ironelderLog", "onClick id = ${v.id}")
+    }
 }
